@@ -45,3 +45,7 @@ void DrawSmallFish(int dir, int posX, int posY) {
 	_SetColor(15);
 
 }
+
+void SmallFishHitP() {
+	player.Health -= E_SMALL_FISH_ATTACK;
+}

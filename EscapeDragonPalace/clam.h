@@ -12,3 +12,4 @@ static const char g_ClamGraphic[CLAM_WIDTH] = "(\\ /)";
 void TriggerClam();
 void UpdateClam(MyPoint pos, bool alive);
 void DrawClam(int posX, int posY);
+void ClamHitP();

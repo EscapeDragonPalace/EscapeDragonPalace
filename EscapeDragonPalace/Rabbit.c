@@ -221,11 +221,48 @@ Rect GetWeaponRect()
 }
 
 bool isSpeedReduced = false;        // 현재 속도 감소 상태 여부
-const unsigned int slowDuration = 3000;  // 3초 동안 속도 감소 (단위: 밀리초) // define 으로 해야할 듯
+//const unsigned int slowDuration = 3000;  // 3초 동안 속도 감소 (단위: 밀리초) // rabbit.h에 define 으로 해둠
 
+// 냅다 업데이트에 넣어놓고 여기서 IsOverlap() 하면 안되나요
+// 조개 속도 감소도 확인하려면 계속 업데이트 돌려야하는거 아니야?
 // 플레이어가 공격당했을 때
 void HitPlayer(Monster monster) {
     DWORD now = GetTickCount();
+
+    // 하영 추가 ==============================
+    /*  이렇게 하자는 거였으 한번 확인해줘
+    Rect playerRect = GetPlayerRect();
+
+    for (int i = 0; i < numMonster; i++) {
+        Rect monsterRect = GetMonsterRect(monsterList[i]);
+
+        if (IsOverlap(playerRect, monsterRect)) {
+            if (now - player.lastHitTime < INVINCIBLE_TIME) {
+                return; // 아직 무적 상태면 데미지 무시
+            }
+
+            switch (monsterList[i].type)
+            {
+            case E_MONSTER_FISH:
+                FishHitP();
+                break;
+            case E_MONSTER_CRAB:
+                CrabHitP();
+                break;
+            case E_MONSTER_CLAM:
+                ClamHitP();
+                monsterList[i].alive = false;
+                break;
+            case E_MONSTER_SMALLFISH:
+                SmallFishHitP();
+                break;            
+            case E_MONSTER_TURTLE:
+                 break;
+            }
+        }
+    }
+    */
+    // =======================================
 
     // 무적 시간 체크
     if (now - player.lastHitTime < INVINCIBLE_TIME) {
@@ -238,12 +275,12 @@ void HitPlayer(Monster monster) {
 
     // 조개: 속도 감소
     if (monster.type == E_MONSTER_CLAM) {
-        player.Speed *= 0.6f;
+        // 여기 있던거 clam.c ClamHitP()로 옮겼어요 0.6f는 SPEEDDOWN으로  rabbit.h에 define 해둠
     }
     /* 조개: 속도 감소 돌아오게 하는 코드 hitplayer함수 넣을때 넣어주세욥
     DWORD now = GetTickCount();
 
-    if (now - player.lastHitTime < slowDuration)
+    if (now - player.lastHitTime < SLOWDURATION)
     {
         player.Speed = 1;
     }
