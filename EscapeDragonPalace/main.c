@@ -140,7 +140,7 @@ void Update()
 
     UpdateMonster();
 
-
+    HitPlayer();
 
 }
 

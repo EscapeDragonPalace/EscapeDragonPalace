@@ -29,5 +29,5 @@ void DrawClam(int posX, int posY) {
 
 void ClamHitP() {
 	player.Health -= E_CLAM_ATTACK;
-	player.Speed *= SPEEDDOWN;
+	player.Speed = SPEEDDOWN;
 }
