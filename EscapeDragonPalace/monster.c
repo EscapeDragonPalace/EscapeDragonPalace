@@ -38,27 +38,27 @@ void UpdateMonster()
 			}*/
 
 			// 몬스터 타입에 따라 오른쪽 벽 충돌시 방향전환
-			if (monsterList[i].type == E_MONSTER_FISH) {
-				// 물고기
-				if (monsterList[i].pos.x + FISH_WIDTH >= monsterList[i].pos.x + monsterList[i].moveNum + GetPlusX()) {
-					monsterList[i].pos.x = monsterList[i].moveNum - FISH_WIDTH;
-					monsterList[i].dir = Left;
-				}
-			}
-			else if (monsterList[i].type == E_MONSTER_CRAB) {
-				// 꽃게
-				if (monsterList[i].pos.x + CRAB_WIDTH >= monsterList[i].pos.x + monsterList[i].moveNum - GetPlusX()) {
-					monsterList[i].pos.x = monsterList[i].moveNum - CRAB_WIDTH;
-					monsterList[i].dir = Left;
-				}
-			}
-			else if (monsterList[i].type == E_MONSTER_SMALLFISH) {
-				// 작은 물고기
-				if (monsterList[i].pos.x + SMALLFISH_WIDTH >= monsterList[i].pos.x + monsterList[i].moveNum + GetPlusX()) {
-					monsterList[i].pos.x = monsterList[i].moveNum - SMALLFISH_WIDTH;
-					monsterList[i].dir = Left;
-				}
-			}
+			//if (monsterList[i].type == E_MONSTER_FISH) {
+			//	// 물고기
+			//	if (monsterList[i].pos.x + FISH_WIDTH >= monsterList[i].pos.x + monsterList[i].moveNum + GetPlusX()) {
+			//		monsterList[i].pos.x = monsterList[i].moveNum - FISH_WIDTH;
+			//		monsterList[i].dir = Left;
+			//	}
+			//}
+			//else if (monsterList[i].type == E_MONSTER_CRAB) {
+			//	// 꽃게
+			//	if (monsterList[i].pos.x + CRAB_WIDTH >= monsterList[i].pos.x + monsterList[i].moveNum - GetPlusX()) {
+			//		monsterList[i].pos.x = monsterList[i].moveNum - CRAB_WIDTH;
+			//		monsterList[i].dir = Left;
+			//	}
+			//}
+			//else if (monsterList[i].type == E_MONSTER_SMALLFISH) {
+			//	// 작은 물고기
+			//	if (monsterList[i].pos.x + SMALLFISH_WIDTH >= monsterList[i].pos.x + monsterList[i].moveNum + GetPlusX()) {
+			//		monsterList[i].pos.x = monsterList[i].moveNum - SMALLFISH_WIDTH;
+			//		monsterList[i].dir = Left;
+			//	}
+			//}
 
 		}
 
@@ -117,6 +117,20 @@ void HitMonster(Monster* monster, Weapon* weapon, unsigned int now) {
 // 몬스터 초기화 함수
 void InitMonster() {
 	//감옥
+	//작은 물고기
+	monsterList[numMonster++] = (Monster){
+		.pos.x = 450,
+		.pos.y = 18,
+		.moveNum = 30,
+		.dir = Left,
+		.hp = 2,
+		.alive = true,
+		.type = E_MONSTER_SMALLFISH,
+		.isDamaged = false,
+		.lastHitTime = 0,
+		.mapStatus = 0
+	};
+
 	//꽃게
 	monsterList[numMonster++] = (Monster){
 		.pos.x = 100,
@@ -266,6 +280,35 @@ void InitMonster() {
 	};
 
 	//용궁맵
+	
+	//작은 물고기
+	monsterList[numMonster++] = (Monster){
+		.pos.x = 360,
+		.pos.y = 23,
+		.moveNum = 30,
+		.dir = Left,
+		.hp = 2,
+		.alive = true,
+		.type = E_MONSTER_SMALLFISH,
+		.isDamaged = false,
+		.lastHitTime = 0,
+		.mapStatus = 1
+	};
+
+	monsterList[numMonster++] = (Monster){
+		.pos.x = 445,
+		.pos.y = 7,
+		.moveNum = 30,
+		.dir = Left,
+		.hp = 2,
+		.alive = true,
+		.type = E_MONSTER_SMALLFISH,
+		.isDamaged = false,
+		.lastHitTime = 0,
+		.mapStatus = 1
+	};
+
+
 	//꽃게
 	monsterList[numMonster++] = (Monster){
 		.pos.x = 70,
@@ -414,6 +457,34 @@ void InitMonster() {
 	};
 
 	//바다 1맵
+	
+	//작은 물고기
+	monsterList[numMonster++] = (Monster){
+		.pos.x = 310,
+		.pos.y = 14,
+		.moveNum = 30,
+		.dir = Left,
+		.hp = 2,
+		.alive = true,
+		.type = E_MONSTER_SMALLFISH,
+		.isDamaged = false,
+		.lastHitTime = 0,
+		.mapStatus = 2
+	};
+
+	monsterList[numMonster++] = (Monster){
+		.pos.x = 600,
+		.pos.y = 23,
+		.moveNum = 30,
+		.dir = Left,
+		.hp = 2,
+		.alive = true,
+		.type = E_MONSTER_SMALLFISH,
+		.isDamaged = false,
+		.lastHitTime = 0,
+		.mapStatus = 2
+	};
+
 	//꽃게
 	monsterList[numMonster++] = (Monster){
 		.pos.x = 120,
@@ -601,6 +672,45 @@ void InitMonster() {
 	};
 
 	//바다맵2
+	//작은 물고기
+	monsterList[numMonster++] = (Monster){
+		.pos.x = 233,
+		.pos.y = 12,
+		.moveNum = 30,
+		.dir = Left,
+		.hp = 2,
+		.alive = true,
+		.type = E_MONSTER_SMALLFISH,
+		.isDamaged = false,
+		.lastHitTime = 0,
+		.mapStatus = 3
+	};
+
+	monsterList[numMonster++] = (Monster){
+		.pos.x = 413,
+		.pos.y = 13,
+		.moveNum = 30,
+		.dir = Left,
+		.hp = 2,
+		.alive = true,
+		.type = E_MONSTER_SMALLFISH,
+		.isDamaged = false,
+		.lastHitTime = 0,
+		.mapStatus = 3
+	};
+
+	monsterList[numMonster++] = (Monster){
+		.pos.x = 570,
+		.pos.y = 15,
+		.moveNum = 30,
+		.dir = Left,
+		.hp = 2,
+		.alive = true,
+		.type = E_MONSTER_SMALLFISH,
+		.isDamaged = false,
+		.lastHitTime = 0,
+		.mapStatus = 3
+	};
 	//꽃게
 	monsterList[numMonster++] = (Monster){
 		.pos.x = 95,
