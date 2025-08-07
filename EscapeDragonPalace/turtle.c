@@ -37,13 +37,6 @@ void DrawTurtle(int dir, int posX, int posY) {
 
 #define MAX_WATER_DROPS 10
 
-typedef struct {
-    int x, y;
-    bool active;
-} WaterDrop;
-
-WaterDrop g_WaterDrops[MAX_WATER_DROPS];
-
 // --------------------------------------------------
 
 // 초기화 시 쿨타임 지정

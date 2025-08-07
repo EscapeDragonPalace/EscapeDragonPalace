@@ -763,8 +763,20 @@ void DrawPlayer()
 
     if (!GetWeaponChosen())
     {
-        // 무기 선택 전: 무기 없는 토끼 이미지 사용
-        idx = dir == 0 ? 12 : 13; // 오른쪽/왼쪽
+        int selectedIndex = GetSelectedIndex();
+
+        if (selectedIndex == 0)
+        {
+            idx = dir == 0 ? 0 : 1; // 장검
+        }
+        else if (selectedIndex == 1)
+        {
+            idx = dir == 0 ? 4 : 5; // 단검
+        }
+        else
+        {
+            idx = dir == 0 ? 8 : 9; // 창
+        }
     }
     else 
     {
