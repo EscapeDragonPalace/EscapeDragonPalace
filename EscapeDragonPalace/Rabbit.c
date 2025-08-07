@@ -184,7 +184,7 @@ Rect GetMonsterRect(Monster monster)
     case E_MONSTER_CRAB:
         return (Rect){ tempX, monster.pos.y, 9, 3 };
     case E_MONSTER_CLAM:
-        return (Rect){ tempX, monster.pos.y, 6, 1 };
+        return (Rect){ tempX, monster.pos.y, 6, 0 };
     case E_MONSTER_TURTLE:
         break;
     }
@@ -220,27 +220,27 @@ Rect GetWeaponRect()
     }
 }
 
-bool isSpeedReduced = false;        // 현재 속도 감소 상태 여부
-//const unsigned int slowDuration = 3000;  // 3초 동안 속도 감소 (단위: 밀리초) // rabbit.h에 define 으로 해둠
-
-// 냅다 업데이트에 넣어놓고 여기서 IsOverlap() 하면 안되나요
-// 조개 속도 감소도 확인하려면 계속 업데이트 돌려야하는거 아니야?
 // 플레이어가 공격당했을 때
-void HitPlayer(Monster monster) {
+void HitPlayer() {
     DWORD now = GetTickCount();
 
-    // 하영 추가 ==============================
-    /*  이렇게 하자는 거였으 한번 확인해줘
+    // 플레이어 충돌 범위 저장
     Rect playerRect = GetPlayerRect();
 
     for (int i = 0; i < numMonster; i++) {
+        if (!monsterList[i].alive) continue;
+        // 몬스터 충돌 범위 저장
         Rect monsterRect = GetMonsterRect(monsterList[i]);
 
+        // 플레이어와 몬스터의 충돌 체크
         if (IsOverlap(playerRect, monsterRect)) {
+            // 무적 시간 체크
             if (now - player.lastHitTime < INVINCIBLE_TIME) {
                 return; // 아직 무적 상태면 데미지 무시
             }
 
+
+            // 몬스터 타입에 따라 피격처리
             switch (monsterList[i].type)
             {
             case E_MONSTER_FISH:
@@ -252,6 +252,15 @@ void HitPlayer(Monster monster) {
             case E_MONSTER_CLAM:
                 ClamHitP();
                 monsterList[i].alive = false;
+                // 이미 조개로 인해 슬로우 적용이 된 상태일 때
+                if (now < player.ClamHitTime) {
+                    // 이미 슬로우 중이면 끝나는 시각을 연장
+                    player.ClamHitTime += SLOWDURATION;
+                }
+                else {
+                    // 슬로우가 끝났거나 처음이면 새로 시작
+                    player.ClamHitTime = now + SLOWDURATION;
+                }
                 break;
             case E_MONSTER_SMALLFISH:
                 SmallFishHitP();
@@ -259,35 +268,22 @@ void HitPlayer(Monster monster) {
             case E_MONSTER_TURTLE:
                  break;
             }
+            player.lastHitTime = now; // 마지막 피격 시각 갱신
         }
     }
-    */
+    
     // =======================================
-
-    // 무적 시간 체크
-    if (now - player.lastHitTime < INVINCIBLE_TIME) {
-        return; // 아직 무적 상태면 데미지 무시
+    if (player.ClamHitTime != 0) {
+        if (now < player.ClamHitTime) {
+            player.Speed = SPEEDDOWN; // 슬로우 효과 적용 (원하는 값으로)
+        }
+        else {
+            player.Speed = 1.2f; // 원래 속도로 복구
+            player.ClamHitTime = 0;
+        }
     }
-
-    // 피격 처리
-    player.Health -= monster.attack;
-    player.lastHitTime = now; // 마지막 피격 시각 갱신
-
-    // 조개: 속도 감소
-    if (monster.type == E_MONSTER_CLAM) {
-        // 여기 있던거 clam.c ClamHitP()로 옮겼어요 0.6f는 SPEEDDOWN으로  rabbit.h에 define 해둠
-    }
-    /* 조개: 속도 감소 돌아오게 하는 코드 hitplayer함수 넣을때 넣어주세욥
-    DWORD now = GetTickCount();
-
-    if (now - player.lastHitTime < SLOWDURATION)
-    {
-        player.Speed = 1;
-    }
-    */
+    
 }
-
-
 
 // 아이템 먹었는지 체크
 void CheckItemPickup()
@@ -800,6 +796,7 @@ void DrawPlayer()
 
     if (!GetWeaponChosen())
     {
+        //무기 선택 화면에 따라 플레이어 스프라이트 인덱스 변경
         int selectedIndex = GetSelectedIndex();
 
         if (selectedIndex == 0)
@@ -923,5 +920,9 @@ void InitPlayer() // 초기화
     animFramesTotal = 10;
 
     isNearItem = false;
+
+    player.lastHitTime = 0;
+    player.ClamHitTime = 0;
+
 }
 

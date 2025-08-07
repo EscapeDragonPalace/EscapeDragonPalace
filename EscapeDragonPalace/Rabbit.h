@@ -22,7 +22,7 @@
 
 #define DURATION 5000
 
-#define SPEEDDOWN 0.6f
+#define SPEEDDOWN 0.72f
 #define SLOWDURATION 3000
 
 // --------------------------------------------------
@@ -47,6 +47,7 @@ typedef struct Player
 	int AttackFrameMax;    // 현재 무기에 맞는 공격 애니메이션 프레임 길이
 
 	unsigned int lastHitTime; // 마지막 피격 시간
+	unsigned int ClamHitTime; // 조개 마지막 피격 시간
 }Player;
 Player player;
 
@@ -77,7 +78,7 @@ Rect GetPlayerRect();
 Rect GetItemRect(Item item);
 Rect GetMonsterRect(Monster monster);
 Rect GetWeaponRect();
-void HitPlayer(Monster monster);
+void HitPlayer();
 void CheckItemPickup();
 void UpdateSpeedBuffs();
 void ClearRabbitAt(int x, int y);
