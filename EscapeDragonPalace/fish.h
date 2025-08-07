@@ -22,3 +22,4 @@ static char g_FishGraphic[2][FISH_HEIGHT][FISH_WIDTH] = {
 void UpdateFish(unsigned int now);	// 물고기 업데이트
 void DrawFish(int dir, int posX, int posY);	// 물고기 그리기
 //void HitFish(unsigned int now, int damage);	// 물고기 데미지 입히기
+void FishHitP();	// 물고기가 플레이어 공격

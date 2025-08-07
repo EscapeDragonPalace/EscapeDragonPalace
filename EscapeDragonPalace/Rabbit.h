@@ -22,6 +22,9 @@
 
 #define DURATION 5000
 
+#define SPEEDDOWN 0.6f
+#define SLOWDURATION 3000
+
 // --------------------------------------------------
 
 typedef struct Player

@@ -28,3 +28,7 @@ void DrawFish(int dir, int posX, int posY) {
 	_SetColor(15);
 
 }
+
+void FishHitP() {
+	player.Health -= E_FISH_ATTACK;
+}

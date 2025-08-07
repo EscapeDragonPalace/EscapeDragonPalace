@@ -18,3 +18,4 @@ static char g_SmallFishGraphic[2][SMALLFISH_HEIGHT][SMALLFISH_WIDTH] = {
 void DrawSmallFish(int dir, int posX, int posY);	// 물고기 그리기
 bool GetSmallFishAlive();	// 물고기 생존여부 반환
 bool GetSmallFishIsDamaged();	// 물고기 데미지 여부 반환
+void SmallFishHitP();	// 물고기가 플레이어 공격
