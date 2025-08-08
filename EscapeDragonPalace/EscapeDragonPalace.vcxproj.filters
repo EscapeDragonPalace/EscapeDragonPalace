@@ -39,19 +39,16 @@
     <ClCompile Include="turtle.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="fish.c">
+    <ClCompile Include="fish_big.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="crab.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="clam.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="monster.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="small_fish.c">
+    <ClCompile Include="fish_small.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,16 +77,13 @@
     <ClInclude Include="monster.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="fish.h">
+    <ClInclude Include="fish_big.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="crab.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="clam.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="small_fish.h">
+    <ClInclude Include="fish_small.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="turtle.h">

@@ -1,29 +1,41 @@
 #pragma once
+#include "monster.h"
 
-#define CRAB_WIDTH 13
-#define CRAB_HEIGHT 3
-#define CRAB_HP 5
+// 메크로
+#define CRAB_WIDTH 13   // 꽃게 너비
+#define CRAB_HEIGHT 3   // 꽃게 높이
+#define CRAB_HP 5		// 꽃게 체력
+#define CRAB_ATTACK 1   // 꽃게 공격력
+#define CRAB_CNT 17     // 꽃게 배열 수
+
+// 꽃게
+typedef struct Crab
+{
+    Monster mon;		// 몬스터 구조체 중첩
+    Skill skill;		// 스킬 구조체 중첩
+    MyPoint pos;		// 위치
+    float startPosX;	// 시작 x 위치
+    int moveNum;		// 이동 범위
+    bool isDamaged;	    // 피격 상태 (무적 여부)
+    Direction dir;      // 몬스터 방향
+} Crab;
 
 // 전역 변수
-const static char crabGraphic[2][CRAB_HEIGHT][CRAB_WIDTH] = {
-    {   
+const static char g_CrabGraphic[2][CRAB_HEIGHT][CRAB_WIDTH] = {
+    {
         "(\\/) (\\/)",
          "  \\o_o/ ",
          " =(___)= "
-    }, //비폭력
+    }, // 기본
 
     {
-        "(l)  (l)",
+        "(|)  (|)",
          " \\o_o/ ",
-         "=(___)= " //Be폭력1
-    }
+         "=(___)= "
+    } // 공격
 };
 
-
-// 꽃게 함수
-void UpdateCrab(unsigned int now);
-void DrawCrab(int posX, int posY);
-void HitCrab(unsigned int now, int damage);
-int GetCrabDir();
-MyPoint GetCrabPos();
-void CrabHitP();
+// 함수
+void InitCrab();    // 초기화
+void DrawCrab();    // 그리기
+void UpdateCrab();  // 업데이트
