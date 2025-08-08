@@ -50,15 +50,29 @@ void DrawSmallFish()
 	}
 }
 
+// 작은 물고기 피격 처리
+//void HitMonster(Weapon* weapon, unsigned int now) {
+//	if (g_SmallFishList[GetMapStatus()]) return;
+//
+//	monster->hp -= weapon->attack;
+//	monster->isDamaged = true;	// 무적 상태 진입
+//	monster->lastHitTime = now;	// 피격 시간 기록
+//
+//	if (monster->hp <= 0) {
+//		monster->alive = false;         // 체력이 0 이하가 되면 사망 처리
+//	}
+//}
+
 void InitSmallFish()
 {
 	// 작은 물고기 공통된 속성 설정
 	g_SmallFishMon = (Monster)
 	{
 		.alive = true,		// 생존 여부
-		.hp = 1,
-		.lastHitTime = 0,
-		.speed = 1.5,
+		.hp = 1,			// 체력
+		.isDamaged = false,	// 피격 상태 (무적 여부)
+		.lastHitTime = 0,	// 마지막 피격 시간
+		.speed = 1.5,		// 이동 속도
 	};
 
 	// 감옥

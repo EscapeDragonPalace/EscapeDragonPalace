@@ -32,5 +32,4 @@ void DrawMonster() {
 
 // 몬스터 피격 처리 함수
 void HitMonster() {
-	
 }

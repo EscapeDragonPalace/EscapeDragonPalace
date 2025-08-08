@@ -6,7 +6,7 @@
 #define ITEMNUM 2            // 아이템 종류 수
 #define MAX_ITEM_COUNT 100   // 맵에 등장할 수 있는 아이템 인스턴스 수
 #define SPEEDUP 0.5     // 속도 증가값
-#define SPEEDDOWN 0.82f // 속도 감소값
+#define SPEEDDOWN 0.5 // 속도 감소값
 #define LIFEUP 2        // 생명 증가값
 #define LIFEDOWN 1      // 생명 감소값
 
