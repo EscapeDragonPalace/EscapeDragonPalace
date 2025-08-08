@@ -185,11 +185,11 @@ Rect GetWeaponRect()
 		switch (GetSelectedIndex())
 		{
 		case 0: // 장검
-			return (Rect) { tempX + 12, player.Pos.y + 2, 8, 0 };
+			return (Rect) { tempX + 14, player.Pos.y + 2, 8, 0 };
 		case 1: // 단검
-			return (Rect) { tempX + 12, player.Pos.y + 2, 4, 0 };
+			return (Rect) { tempX + 14, player.Pos.y + 2, 4, 0 };
 		case 2: // 창
-			return (Rect) { tempX + 12, player.Pos.y + 2, 7, 0 };
+			return (Rect) { tempX + 14, player.Pos.y + 2, 7, 0 };
 		}
 	}
 	// 플레이어가 왼쪽 보고 있을 때
@@ -199,7 +199,7 @@ Rect GetWeaponRect()
 		case 0: // 장검
 			return (Rect) { tempX, player.Pos.y + 2, 8, 0 };
 		case 1: // 단검
-			return (Rect) { tempX + 2, player.Pos.y + 2, 4, 0 };
+			return (Rect) { tempX + 4, player.Pos.y + 2, 4, 0 };
 		case 2: // 창
 			return (Rect) { tempX + 1, player.Pos.y + 2, 7, 0 };
 		}
