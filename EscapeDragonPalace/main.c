@@ -115,43 +115,42 @@ void Input()
 
 void main()
 {
-    // init
+    // 초기화
     _BeginWindow();
-
-    SetConsoleTitle("용궁탈출");
-
     InitMonster();  // 몬스터 초기화
-    InitItem();  // 아이템 초기화
     InitWeapon(weaponList); // 무기 초기화
-    InitPlayer();
-    DrawStartScreen();  // 시작화면 작동 함수 출력
-    SelectWeapon(); // 무기 선택
-    player.HeldWeapon = &weaponList[GetSelectedIndex()];    // 플레이어 무기 세팅
-
-
-
-
-    //로직
-    while (true)
+    InitItem();  // 아이템 초기화
+    while(true)
     {
-        GetInput();
-        ItemFrameDelay();   // 아이템 모션 효과
-        Input(); // 키 입력
+        InitPlayer();
 
-        Update(); // 업데이트
+        SetConsoleTitle("용궁탈출");
 
-        _Invalidate(); // 화면 그리기 (Draw() 함수 자동 적용)
-        _Delay(30);
+        DrawStartScreen();  // 시작화면 작동 함수 출력
+        SelectWeapon(); // 무기 선택
+        player.HeldWeapon = &weaponList[GetSelectedIndex()];    // 플레이어 무기 세팅
 
-
-        if (GetIsGameOver())
+        //로직
+        while (true)
         {
-            ReturnStartScreen();    // 게임오버 화면 출력
-            main(); // 메인 재호출
+            GetInput();
+            ItemFrameDelay();   // 아이템 모션 효과
+            Input(); // 키 입력
 
+            Update(); // 업데이트
+
+            _Invalidate(); // 화면 그리기 (Draw() 함수 자동 적용)
+            _Delay(30);
+
+
+            if (GetIsGameOver())
+            {
+                ReturnStartScreen();    // 게임오버 화면 출력
+                break;
+            }
         }
+
+
+        _EndWindow();
     }
-
-
-    _EndWindow();
 }

@@ -1,5 +1,7 @@
 #include "init.h"
+#include "map.h"
 #include "screens.h"
+#include "weapon.h"
 
 bool GameStart = false; // 게임 시작 여부
 bool GameStartText = true; // 게임 시작 여부 텍스트
@@ -74,6 +76,9 @@ void ReturnStartScreen() {
 			IsGameOver = false; // 게임오버 변수 false 변경
 			GameStart = false;  // 게임시작 변수 false 변경
 			SetWeaponChosen(false); // 무기 선택여부 false로 변경
+			SetMapSetting(false);	// 아이템 세팅 초기화
+			SetMapStatus(E_Jail);	// 원래 맵으로 이동
+			SetPlusX(0);	// X 좌표 증가값 0으로 변경
 			_getch();	// 입력 버퍼 비우기
 		}
 		// 문구 이펙트 효과

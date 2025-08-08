@@ -43,7 +43,6 @@ typedef struct Player
 	int AttackFrameMax;    // 현재 무기에 맞는 공격 애니메이션 프레임 길이
 
 	unsigned int lastHitTime; // 마지막 피격 시간
-	unsigned int ClamHitTime; // 조개 마지막 피격 시간
 }Player;
 Player player;
 

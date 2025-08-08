@@ -882,7 +882,7 @@ void InitPlayer() // 초기화
 	player.Pos.x = RabbitXPos;
 	player.Pos.y = RabbitYPos;
 	player.Speed = 1.2f;
-	player.Health = 10;
+	player.Health = 1;
 	player.VelY = 0.0f;
 	player.IsJumping = false;
 	player.Direction = 0;
@@ -925,7 +925,5 @@ void InitPlayer() // 초기화
 	isNearItem = false;
 
 	player.lastHitTime = 0;
-	player.ClamHitTime = 0;
-
 }
 
