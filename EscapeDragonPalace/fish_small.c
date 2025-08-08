@@ -3,14 +3,14 @@
 
 Monster g_SmallFishMon;	// 작은 물고기 몬스터 구조체 공통 설정
 SmallFish g_SmallFishList[STAGE_CNT][SMALLFISH_CNT];	// 작은 물고기 포인트 배열
-int g_SmallFishListIdx = 0;
+int g_SmallFishListIdx[STAGE_CNT - 1] = { 0, };	// 보스맵 제외
 
 // 작은 물고기 업데이트
 void UpdateSmallFish(unsigned long now)
 {
 	// 현재 맵의 몬스터 데이터 불러오기
 	SmallFish* tempSmallFish = g_SmallFishList[GetMapStatus()];
-	for (int idx = 0; idx < g_SmallFishListIdx; idx++)
+	for (int idx = 0; idx < g_SmallFishListIdx[GetMapStatus()]; idx++)
 	{
 		// 몬스터가 죽었을 경우 넘어가기
 		if (!tempSmallFish[idx].mon.alive) continue;
@@ -29,11 +29,13 @@ void UpdateSmallFish(unsigned long now)
 // 작은 물고기 그리기
 void DrawSmallFish()
 {
+	_SetColor(E_Teal);	// 항상 파란색
+
 	// 현재 맵 데이터 임시로 불러오기
 	SmallFish* tempSmallFish = g_SmallFishList[GetMapStatus()];
-	for (int idx = 0; idx < g_SmallFishListIdx; idx++)
+	for (int idx = 0; idx < g_SmallFishListIdx[GetMapStatus()]; idx++)
 	{
-		int tempX = tempSmallFish[idx].pos.x + GetPlusX();
+		int tempX = tempSmallFish[idx].pos.x - GetPlusX();
 		for (int x = 0; x < SMALLFISH_WIDTH; x++)
 		{
 			if (g_SmallFishGraphic[x] != ' ')
@@ -60,7 +62,7 @@ void InitSmallFish()
 	};
 
 	// 감옥
-	g_SmallFishList[E_Jail][g_SmallFishListIdx++] = (SmallFish)
+	g_SmallFishList[E_Jail][g_SmallFishListIdx[E_Jail]++] = (SmallFish)
 	{
 		.pos.x = 450,	// X 좌표
 		.pos.y = 18,	// Y 좌표
@@ -68,14 +70,14 @@ void InitSmallFish()
 	};
 
 	// 용궁
-	g_SmallFishList[E_DragonPalace][g_SmallFishListIdx++] = (SmallFish)
+	g_SmallFishList[E_DragonPalace][g_SmallFishListIdx[E_DragonPalace]++] = (SmallFish)
 	{
 		.pos.x = 360,
 		.pos.y = 23,
 		.attack = SMALLFISH_ATTACK,
 	};
 
-	g_SmallFishList[E_DragonPalace][g_SmallFishListIdx++] = (SmallFish)
+	g_SmallFishList[E_DragonPalace][g_SmallFishListIdx[E_DragonPalace]++] = (SmallFish)
 	{
 		.pos.x = 445,
 		.pos.y = 7,
@@ -83,14 +85,14 @@ void InitSmallFish()
 	};
 
 	// 바다1
-	g_SmallFishList[E_Sea1][g_SmallFishListIdx++] = (SmallFish)
+	g_SmallFishList[E_Sea1][g_SmallFishListIdx[E_Sea1]++] = (SmallFish)
 	{
 		.pos.x = 310,
 		.pos.y = 14,
 		.attack = SMALLFISH_ATTACK,
 	};
 	
-	g_SmallFishList[E_Sea1][g_SmallFishListIdx++] = (SmallFish)
+	g_SmallFishList[E_Sea1][g_SmallFishListIdx[E_Sea1]++] = (SmallFish)
 	{
 		.pos.x = 600,
 		.pos.y = 23,
@@ -98,21 +100,21 @@ void InitSmallFish()
 	};
 
 	// 바다2
-	g_SmallFishList[E_Sea2][g_SmallFishListIdx++] = (SmallFish)
+	g_SmallFishList[E_Sea2][g_SmallFishListIdx[E_Sea2]++] = (SmallFish)
 	{
 		.pos.x = 233,
 		.pos.y = 12,
 		.attack = SMALLFISH_ATTACK,
 	};
 
-	g_SmallFishList[E_Sea2][g_SmallFishListIdx++] = (SmallFish)
+	g_SmallFishList[E_Sea2][g_SmallFishListIdx[E_Sea2]++] = (SmallFish)
 	{
 		.pos.x = 413,
 		.pos.y = 13,
 		.attack = SMALLFISH_ATTACK,
 	};
 
-	g_SmallFishList[E_Sea2][g_SmallFishListIdx++] = (SmallFish)
+	g_SmallFishList[E_Sea2][g_SmallFishListIdx[E_Sea2]++] = (SmallFish)
 	{
 		.pos.x = 570,
 		.pos.y = 15,

@@ -20,4 +20,4 @@ static char g_SmallFishGraphic[SMALLFISH_WIDTH] = "<')))><";
 // 함수
 void InitSmallFish();	// 초기화
 void DrawSmallFish();	// 그리기
-void UpdateSmallFish();	// 업데이트
+void UpdateSmallFish(unsigned long now);	// 업데이트

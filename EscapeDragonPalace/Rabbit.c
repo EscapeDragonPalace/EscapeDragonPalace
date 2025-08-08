@@ -334,7 +334,7 @@ void UpdateBuffs()
 
 	if (slowDebuffs.active && GetTickCount() >= slowDebuffs.endTime)
 	{
-		player.Speed += SPEEDDOWN;
+		player.Speed += SPEEDDOWN;	// 원래대로 증가
 		slowDebuffs.active = false;
 	}
 }

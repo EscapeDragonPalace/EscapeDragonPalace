@@ -70,7 +70,7 @@ void DrawItem() {
 				break;
 			case E_ITEM_SPEED:	// 속도증가(공기방울)일 때
 				sprite = &g_BubblesSprite;
-				_SetColor(E_Teal);
+				_SetColor(E_BrightTeal);
 				break;
 			case E_ITEM_DEBUFF:
 				_SetColor(E_White);

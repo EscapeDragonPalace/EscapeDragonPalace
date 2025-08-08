@@ -4,18 +4,17 @@
 Monster g_CrabMon;	// 꽃게 몬스터 구조체 공통 설정
 Skill g_CrabSkill;	// 꽃게 스킬 구조체 공통 설정
 Crab g_CrabList[STAGE_CNT][CRAB_CNT];	// 꽃게 포인트 배열
-int g_CrabListIdx = 0;
+int g_CrabListIdx[STAGE_CNT - 1] = { 0, };	// 보스맵 제외
 
 // 꽃게 업데이트
 void UpdateCrab(unsigned long now)
 {
 	// 현재 맵의 몬스터 데이터 불러오기
 	Crab* tempCrab = g_CrabList[GetMapStatus()];
-	for (int idx = 0; idx < g_CrabListIdx; idx++)
-	{
-		// 피격 시 노란색, 평시 빨간색
-		_SetColor(g_CrabList[GetMapStatus()][idx].isDamaged ? E_Yellow : E_BrightRed);
 
+	// 현재 맵에 있는 몬스터 수만큼 반복하기
+	for (int idx = 0; idx < g_CrabListIdx[GetMapStatus()]; idx++)
+	{
 		// 몬스터가 죽었을 경우 넘어가기
 		if (!tempCrab[idx].mon.alive) continue;
 
@@ -42,7 +41,7 @@ void UpdateCrab(unsigned long now)
 // 꽃게 공격 체크, 공격 애니메이션 처리
 void CheckAttacking()
 {
-	for (int i = 0; i < g_CrabListIdx; i++)
+	for (int i = 0; i < g_CrabListIdx[GetMapStatus()]; i++)
 	{
 		// 죽은 몬스터일 경우 넘어가기
 		if (!g_CrabList[GetMapStatus()][i].mon.alive) continue;
@@ -56,9 +55,12 @@ void DrawCrab()
 {
 	// 현재 맵 데이터 임시로 불러오기
 	Crab* tempCrab = g_CrabList[GetMapStatus()];
-	for (int idx = 0; idx < g_CrabListIdx; idx++)
+	for (int idx = 0; idx < g_CrabListIdx[GetMapStatus()]; idx++)
 	{
-		int tempX = tempCrab[idx].pos.x + GetPlusX();
+		// 피격 시 노란색, 평시 빨간색
+		_SetColor(g_CrabList[GetMapStatus()][idx].isDamaged ? E_Yellow : E_BrightRed);
+
+		int posX = tempCrab[idx].pos.x - GetPlusX();
 		for (int y = 0; y < CRAB_HEIGHT; y++)
 		{
 			for (int x = 0; x < CRAB_WIDTH; x++)
@@ -66,9 +68,10 @@ void DrawCrab()
 				if (g_CrabGraphic[tempCrab[idx].dir][y][x] != ' ')
 				{
 					// 화면 범위 내에 있을 경우 그리기
-					if (0 <= tempX + x && SCREEN_WIDTH > tempX + x)
+					if (0 <= posX + x && SCREEN_WIDTH > posX + x)
 					{
-						_DrawText(tempX + x, tempCrab[idx].pos.y + y, (char[]) { g_CrabGraphic[tempCrab[idx].dir][y][tempX + x], 0 });
+						_DrawText(posX + x, tempCrab[idx].pos.y + y, 
+							(char[]) { g_CrabGraphic[tempCrab[idx].dir][y][x], 0 });
 					}
 				}
 			}
@@ -96,7 +99,7 @@ void InitCrab()
 	};
 
 	// 감옥
-	g_CrabList[E_Jail][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Jail][g_CrabListIdx[E_Jail]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -108,7 +111,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_Jail][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Jail][g_CrabListIdx[E_Jail]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -120,7 +123,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_Jail][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Jail][g_CrabListIdx[E_Jail]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -133,7 +136,7 @@ void InitCrab()
 	};
 
 	// 용궁
-	g_CrabList[E_DragonPalace][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_DragonPalace][g_CrabListIdx[E_Jail]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -145,7 +148,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_DragonPalace][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_DragonPalace][g_CrabListIdx[E_DragonPalace]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -157,7 +160,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_DragonPalace][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_DragonPalace][g_CrabListIdx[E_DragonPalace]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -169,7 +172,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_DragonPalace][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_DragonPalace][g_CrabListIdx[E_DragonPalace]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -182,7 +185,7 @@ void InitCrab()
 	};
 
 	// 바다1
-	g_CrabList[E_Sea1][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Sea1][g_CrabListIdx[E_Sea1]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -194,7 +197,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_Sea1][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Sea1][g_CrabListIdx[E_Sea1]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -206,7 +209,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_Sea1][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Sea1][g_CrabListIdx[E_Sea1]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -218,7 +221,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_Sea1][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Sea1][g_CrabListIdx[E_Sea1]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -230,7 +233,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_Sea1][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Sea1][g_CrabListIdx[E_Sea1]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -243,7 +246,7 @@ void InitCrab()
 	};
 
 	// 바다2
-	g_CrabList[E_Sea2][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Sea2][g_CrabListIdx[E_Sea2]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -255,7 +258,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_Sea2][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Sea2][g_CrabListIdx[E_Sea2]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -267,7 +270,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_Sea2][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Sea2][g_CrabListIdx[E_Sea2]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -279,7 +282,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_Sea2][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Sea2][g_CrabListIdx[E_Sea2]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -291,7 +294,7 @@ void InitCrab()
 		.dir = E_Right,
 	};
 
-	g_CrabList[E_Sea2][g_CrabListIdx++] = (Crab)
+	g_CrabList[E_Sea2][g_CrabListIdx[E_Sea2]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
