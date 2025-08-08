@@ -36,4 +36,4 @@ static char g_BigFishGraphic[2][BIGFISH_HEIGHT][BIGFISH_WIDTH] = {
 // 함수
 void InitBigFish();		// 초기화
 void DrawBigFish();		// 그리기
-void UpdateBigFish();	// 업데이트
+void UpdateBigFish(unsigned long now);	// 업데이트

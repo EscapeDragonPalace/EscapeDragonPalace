@@ -67,8 +67,7 @@ void Draw() // 화면 그리기
                 _SetColor(E_White); // 아이템 외 색상 초기화
 
 
-                // 몬스터 출력
-
+                // 몬스터 출력  
                 DrawMonster();
                 _SetColor(E_White); // 몬스터 외 색상 초기화
 
@@ -104,7 +103,7 @@ void Update()
 
     UpdateMonster();
 
-    //HitPlayer();
+    //HitPlayer();  // 플레이어 피격 처리 함수
 
 }
 
