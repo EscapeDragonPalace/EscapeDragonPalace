@@ -3,7 +3,7 @@
 
 Monster g_SmallFishMon;	// 작은 물고기 몬스터 구조체 공통 설정
 SmallFish g_SmallFishList[STAGE_CNT][SMALLFISH_CNT];	// 작은 물고기 포인트 배열
-int g_SmallFishListIdx[STAGE_CNT - 1] = { 0, };	// 보스맵 제외
+int g_SmallFishListIdx[STAGE_CNT] = { 0, };
 
 // 작은 물고기 업데이트
 void UpdateSmallFish(unsigned long now)
@@ -19,7 +19,7 @@ void UpdateSmallFish(unsigned long now)
 		--tempSmallFish[idx].pos.x;
 
 		// 몬스터가 왼쪽 화면 밖으로 넘어갔을 경우 죽음 처리
-		if (tempSmallFish[idx].pos.x <= 0)
+		if (tempSmallFish[idx].pos.x - GetPlusX() <= 0)
 		{
 			tempSmallFish[idx].mon.alive = false;
 		}

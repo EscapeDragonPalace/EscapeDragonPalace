@@ -4,7 +4,7 @@
 Monster g_CrabMon;	// 꽃게 몬스터 구조체 공통 설정
 Skill g_CrabSkill;	// 꽃게 스킬 구조체 공통 설정
 Crab g_CrabList[STAGE_CNT][CRAB_CNT];	// 꽃게 포인트 배열
-int g_CrabListIdx[STAGE_CNT - 1] = { 0, };	// 보스맵 제외
+int g_CrabListIdx[STAGE_CNT] = { 0, };
 
 // 꽃게 업데이트
 void UpdateCrab(unsigned long now)

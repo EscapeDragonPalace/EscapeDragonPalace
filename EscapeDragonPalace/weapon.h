@@ -23,5 +23,6 @@ char buffer[50];
 extern void InitWeapon(Weapon* weapons);
 extern void DrawWeapon(const Weapon* w, int i, int isSelected);
 extern void SelectWeapon();
-bool GetWeaponChosen();
+bool GetWeaponChosen(); 
+void SetWeaponChosen(bool src);
 int GetSelectedIndex();

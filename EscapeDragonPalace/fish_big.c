@@ -3,7 +3,7 @@
 
 Monster g_BigFishMon;	// 큰 물고기 몬스터 구조체 공통 설정
 BigFish g_BigFishList[STAGE_CNT][BIGFISH_CNT];	// 큰 물고기 포인트 배열
-int g_BigFishListIdx[STAGE_CNT - 1] = { 0, };	// 보스맵 제외
+int g_BigFishListIdx[STAGE_CNT] = { 0, };
 
 // 큰 물고기 업데이트
 void UpdateBigFish(unsigned long now)
