@@ -16,7 +16,6 @@ typedef struct Crab
     MyPoint pos;		// 위치
     float startPosX;	// 시작 x 위치
     int moveNum;		// 이동 범위
-    bool isDamaged;	    // 피격 상태 (무적 여부)
     Direction dir;      // 몬스터 방향
 } Crab;
 
