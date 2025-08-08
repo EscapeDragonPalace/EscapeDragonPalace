@@ -19,9 +19,9 @@ void UpdateCrab(unsigned long now)
 		if (!tempCrab[idx].mon.alive) continue;
 
 		// 무적시간 지나면 피격 상태 해제
-		if (tempCrab[idx].isDamaged && now - tempCrab[idx].mon.lastHitTime >= INVINCIBLE_TIME)
+		if (tempCrab[idx].mon.isDamaged && now - tempCrab[idx].mon.lastHitTime >= INVINCIBLE_TIME)
 		{
-			tempCrab[idx].isDamaged = false;
+			tempCrab[idx].mon.isDamaged = false;
 		}
 
 		// 몬스터 이동
@@ -58,7 +58,7 @@ void DrawCrab()
 	for (int idx = 0; idx < g_CrabListIdx[GetMapStatus()]; idx++)
 	{
 		// 피격 시 노란색, 평시 빨간색
-		_SetColor(g_CrabList[GetMapStatus()][idx].isDamaged ? E_Yellow : E_BrightRed);
+		_SetColor(g_CrabList[GetMapStatus()][idx].mon.isDamaged ? E_Yellow : E_BrightRed);
 
 		int posX = tempCrab[idx].pos.x - GetPlusX();
 		for (int y = 0; y < CRAB_HEIGHT; y++)
@@ -87,6 +87,7 @@ void InitCrab()
 	{
 		.alive = true,		// 생존 여부
 		.hp = 5,			// 체력
+		.isDamaged = false,	// 피격 상태 (무적 여부)
 		.lastHitTime = 0,	// 마지막 피격 시간
 		.speed = 1.5,		// 이동 속도
 	};
@@ -107,7 +108,6 @@ void InitCrab()
 		.pos.y = 21,		// Y 좌표
 		.startPosX = 100,	// 초기 X 좌표
 		.moveNum = 30,		// 이동 범위
-		.isDamaged = false,	// 피격 상태 (무적 여부)
 		.dir = E_Right,
 	};
 
@@ -119,7 +119,6 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 170,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -131,12 +130,11 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 285,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
 	// 용궁
-	g_CrabList[E_DragonPalace][g_CrabListIdx[E_Jail]++] = (Crab)
+	g_CrabList[E_DragonPalace][g_CrabListIdx[E_DragonPalace]++] = (Crab)
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
@@ -144,7 +142,6 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 70,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -156,7 +153,6 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 170,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -168,7 +164,6 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 280,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -180,7 +175,6 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 440,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -193,7 +187,6 @@ void InitCrab()
 		.pos.y = 13,
 		.startPosX = 120,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -205,7 +198,6 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 190,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -217,7 +209,6 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 400,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -229,7 +220,6 @@ void InitCrab()
 		.pos.y = 17,
 		.startPosX = 575,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -241,7 +231,6 @@ void InitCrab()
 		.pos.y = 7,
 		.startPosX = 580,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -254,7 +243,6 @@ void InitCrab()
 		.pos.y = 10,
 		.startPosX = 95,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -266,7 +254,6 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 150,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -278,7 +265,6 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 410,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -290,7 +276,6 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 500,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -302,7 +287,6 @@ void InitCrab()
 		.pos.y = 21,
 		.startPosX = 610,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 }

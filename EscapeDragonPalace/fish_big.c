@@ -17,9 +17,9 @@ void UpdateBigFish(unsigned long now)
 		if (!tempBigFish[idx].mon.alive) continue;
 
 		// 무적시간 지나면 피격 상태 해제
-		if (tempBigFish[idx].isDamaged && now - tempBigFish[idx].mon.lastHitTime >= INVINCIBLE_TIME)
+		if (tempBigFish[idx].mon.isDamaged && now - tempBigFish[idx].mon.lastHitTime >= INVINCIBLE_TIME)
 		{
-			tempBigFish[idx].isDamaged = false;
+			tempBigFish[idx].mon.isDamaged = false;
 		}
 
 		// 몬스터 이동
@@ -45,7 +45,7 @@ void DrawBigFish()
 	for (int idx = 0; idx < g_BigFishListIdx[GetMapStatus()]; idx++)
 	{
 		// 피격 시 빨간색, 평시 파란색
-		_SetColor(g_BigFishList[GetMapStatus()][g_BigFishListIdx[GetMapStatus()]].isDamaged ? E_BrightRed : E_BrightBlue);
+		_SetColor(g_BigFishList[GetMapStatus()][g_BigFishListIdx[GetMapStatus()]].mon.isDamaged ? E_BrightRed : E_BrightBlue);
 
 		int posX = tempBigFish[idx].pos.x - GetPlusX();
 		for(int y = 0; y < BIGFISH_HEIGHT; y++)
@@ -74,6 +74,7 @@ void InitBigFish()
 	{
 		.alive = true,		// 생존 여부
 		.hp = 4,			// 체력
+		.isDamaged = false,	// 피격 상태 (무적 여부)
 		.lastHitTime = 0,	// 마지막 피격 시간
 		.speed = 1.5,		// 이동 속도
 	};
@@ -87,7 +88,6 @@ void InitBigFish()
 		.startPosX = 100,	// 초기 X 좌표
 		.attack = BIGFISH_ATTACK,	// 공격력
 		.moveNum = 30,		// 이동 범위
-		.isDamaged = false,	// 피격 상태 (무적 여부)
 		.dir = E_Right,		// 바라보는 방향
 	};
 
@@ -99,7 +99,6 @@ void InitBigFish()
 		.startPosX = 170,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -111,7 +110,6 @@ void InitBigFish()
 		.startPosX = 300,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -123,7 +121,6 @@ void InitBigFish()
 		.startPosX = 500,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -135,7 +132,6 @@ void InitBigFish()
 		.startPosX = 500,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -148,7 +144,6 @@ void InitBigFish()
 		.startPosX = 70,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -160,7 +155,6 @@ void InitBigFish()
 		.startPosX = 170,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -172,7 +166,6 @@ void InitBigFish()
 		.startPosX = 280,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -184,7 +177,6 @@ void InitBigFish()
 		.startPosX = 520,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -197,7 +189,6 @@ void InitBigFish()
 		.startPosX = 120,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -209,7 +200,6 @@ void InitBigFish()
 		.startPosX = 190,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -221,7 +211,6 @@ void InitBigFish()
 		.startPosX = 300,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -233,7 +222,6 @@ void InitBigFish()
 		.startPosX = 400,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -245,7 +233,6 @@ void InitBigFish()
 		.startPosX = 480,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -258,7 +245,6 @@ void InitBigFish()
 		.startPosX = 260,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -270,7 +256,6 @@ void InitBigFish()
 		.startPosX = 320,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 
@@ -282,7 +267,6 @@ void InitBigFish()
 		.startPosX = 410,
 		.attack = BIGFISH_ATTACK,
 		.moveNum = 30,
-		.isDamaged = false,
 		.dir = E_Right,
 	};
 }

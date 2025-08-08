@@ -12,6 +12,7 @@ typedef struct Monster
 	bool alive;					// 생존 여부
 	int hp;						// 몬스터 체력
 	float speed;				// 이동 속도
+	bool isDamaged;				// 피격 상태 (무적 여부)
 	unsigned long lastHitTime;	// 마지막 피격 시간
 } Monster;
 
