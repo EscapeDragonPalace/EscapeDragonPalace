@@ -166,13 +166,14 @@ bool IsOverlap(Rect player, Rect Obj)
 // 플레이어의 충돌 범위 반환
 Rect GetPlayerRect()
 {
-	return (Rect) { player.Pos.x, player.Pos.y, 8, 3 };
+	return (Rect) { player.Pos.x + 8, player.Pos.y, 4, 3 };
 }
 
 // 아이템의 충돌 범위 반환
 Rect GetItemRect(Item item)
 {
-	return (Rect) { item.x - 7 - GetPlusX(), item.y, item.width + 2, item.height };
+	if (item.type == E_ITEM_DEBUFF) { return (Rect) { item.x +1 - GetPlusX(), item.y, item.width -3, item.height }; }
+	return (Rect) { item.x -4 - GetPlusX(), item.y, item.width +6, item.height };
 }
 
 // 무기 충돌 범위 반환
