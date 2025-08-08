@@ -3,10 +3,7 @@
 #include "init.h"
 #include "weapon.h"
 #include "item.h"
-#include "screens.h"
 #include "monster.h"
-
-
 
 // --------------------------------------------------
 
@@ -22,7 +19,6 @@
 
 #define DURATION 5000
 
-#define SPEEDDOWN 0.72f
 #define SLOWDURATION 3000
 
 // --------------------------------------------------
@@ -57,12 +53,6 @@ typedef struct SpeedBuff {
 	bool active;
 } SpeedBuff;
 
-
-typedef struct Rect {
-	float x, y, w, h;
-} Rect;
-
-
 // --------------------------------------------------
 
 bool SetMapEnd(bool src);
@@ -80,7 +70,7 @@ Rect GetMonsterRect(Monster monster);
 Rect GetWeaponRect();
 void HitPlayer();
 void CheckItemPickup();
-void UpdateSpeedBuffs();
+void UpdateBuffs();
 void ClearRabbitAt(int x, int y);
 void DrawRabbitAt(int x, int y, int idx);
 void RabbitCAnim();

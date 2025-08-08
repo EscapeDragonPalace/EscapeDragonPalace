@@ -3,6 +3,8 @@
 
 bool GameStart = false; // 게임 시작 여부
 bool GameStartText = true; // 게임 시작 여부 텍스트
+bool IsGameOver = false; // 게임 오버 여부
+bool GameOverText = true;
 
 
 // 게임오버 화면 출력 함수
@@ -92,4 +94,24 @@ bool GetGameStart()
 bool GetGameStartText()
 {
 	return GameStartText;
+}
+
+bool GetIsGameOver()
+{
+	return IsGameOver;
+}
+
+void SetIsGameOver(int src)
+{
+	IsGameOver = src;
+}
+
+bool GetGameOverText()
+{
+	return GameOverText;
+}
+
+void SetIsGameOverText(int src)
+{
+	GameOverText = src;
 }

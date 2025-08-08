@@ -1,45 +1,45 @@
 #pragma once
+#include "monster.h"
 
-#define TURTLE_HEIGHT 6
-#define TURTLE_WIDTH 24
-#define TURTLE_HP 30
-#define MAX_WATER_DROPS 10
+#define TURTLE_HEIGHT 6     // 자라 높이
+#define TURTLE_WIDTH 24     // 자라 너비
+#define TURTLE_HP 80        // 자라 체력
 
-typedef struct {
-    int x, y;
-    int dir;
-    int hp;
-    bool isAttacking;
-    unsigned int attackStartTime;
-    unsigned int lastAttackTime;
-} Turtle;
+// 자라 스킬
+typedef enum TurtleSkill
+{
+	E_Basic,		// 평타
+	E_Rush,			// 돌진
+	E_WaterCannon,	// 물대포
+	E_SkillCnt,		// 스킬 갯수
+} TurtleSkill;
 
-typedef struct {
-    int x, y;
-    bool active;
-} WaterDrop;
+// 자라
+typedef struct BossTurtle
+{
+	Monster mon;				// 몬스터 구조체 중첩
+	Skill skill[E_SkillCnt];	// 스킬 구조체 중첩 (스킬 3개)
+	float speed;				// 이동 속도
+	bool isDamaged;				// 피격 상태 (무적 여부)
+	Direction dir;				// 바라보는 방향
+} BossTurtle;
 
-WaterDrop g_WaterDrops[MAX_WATER_DROPS];
-
-static const char* turtleGraphic[2][TURTLE_HEIGHT]= {
-    {
-    "        ______ ",
-    "  ___ _/ \\__/ \\_   /|",
-    " (_o / \\ /  \\ / \\_/ |",
-    "  \\__ -----------__/",
-    "      \\_|_|_|_|_/ ",
-    "     /_|_|  /_|_|"
-    },
-    {
-    "       ______"
-    "|\\   _/ \\__/ \\_ ___"
-    "| \\_/ \\ /  \\ / \\ o_)"
-    " \\__----------- __/"
-    "    \\_|_|_|_|_/"
-    "    |_|_\\  |_|_\\ "
-    }
+static const char turtleGraphic[2][TURTLE_HEIGHT][TURTLE_WIDTH] =
+{
+	{
+		"        ________",
+		"  ___ _/ \\__/ \\_   /|",
+		" (_o / \\ /  \\ / \\_/ |",
+		"  \\__ -----------__/",
+		"      \\_|_|_|_|_/ ",
+		"     /_|_|  /_|_|"
+	},
+	{
+		"        ________",
+		"|\\   _/ \\__/ \\_ ___",
+		"| \\_/ \\ /  \\ / \\ o_)",
+		" \\__----------- __/",
+		"    \\_|_|_|_|_/",
+		"    |_|_\\  |_|_\\ ",
+	}
 };
-
-void DrawTurtle(int dir, int posX, int posY);
-void UpdateTurtleWaterCannon(unsigned int now);
-void DrawWaterDrops();

@@ -2,23 +2,12 @@
 #include "init.h"
 
 // 매크로
-#define STAGE_CNT 5 // 스테이지 갯수
 #define BG_CNT 10 // 맵 배경 요소 갯수
 #define BG_LINE 20 // 맵 배경 줄 수
 #define PLATFORM_LINE_CNT 10 // 발판 줄 수
 #define MAP_HEIGHT SCREEN_HEIGHT // 맵 높이
 #define MAP_WIDTH 700 // 맵 너비
 #define GOAL_HEIGHT 5 // 도착지점 높이
-
-// 맵
-typedef enum MapStatus
-{
-	E_Jail, // 감옥
-	E_DragonPalace, // 용궁
-	E_Sea1, // 바다1
-	E_Sea2, // 바다2
-	E_Ground, // 육지(보스)
-} MapStatus;
 
 // TODO: 맵 따로 저장하는 파일 만들기
 /// <summary>
@@ -337,4 +326,5 @@ void SetMapStatus(int src); // 현재 맵 상태 변경하기
 int GetPlusX(); // X 증가값 불러오기
 void SetPlusX(int src); // X값 변경하기
 bool GetMapSetting();
-void SetMapSetting(bool src);
+void SetMapSetting(bool src); 
+void FMapSetting();

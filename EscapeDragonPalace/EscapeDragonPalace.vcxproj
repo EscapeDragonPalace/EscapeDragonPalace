@@ -127,12 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="clam.c" />
     <ClCompile Include="crab.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="fish.c">
+    <ClCompile Include="fish_big.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="item.c">
@@ -148,16 +147,15 @@
     <ClCompile Include="mtg.c" />
     <ClCompile Include="Rabbit.c" />
     <ClCompile Include="screens.c" />
-    <ClCompile Include="small_fish.c" />
+    <ClCompile Include="fish_small.c" />
     <ClCompile Include="turtle.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="weapon.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="clam.h" />
     <ClInclude Include="crab.h" />
-    <ClInclude Include="fish.h" />
+    <ClInclude Include="fish_big.h" />
     <ClInclude Include="init.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="map.h" />
@@ -165,7 +163,7 @@
     <ClInclude Include="mtg.h" />
     <ClInclude Include="Rabbit.h" />
     <ClInclude Include="screens.h" />
-    <ClInclude Include="small_fish.h" />
+    <ClInclude Include="fish_small.h" />
     <ClInclude Include="turtle.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
