@@ -104,10 +104,10 @@ void InitCrab()
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
-		.pos.x = 100,		// X ÁÂÇ¥
+		.pos.x = 95,		// X ÁÂÇ¥
 		.pos.y = 21,		// Y ÁÂÇ¥
-		.startPosX = 100,	// ÃÊ±â X ÁÂÇ¥
-		.moveNum = 30,		// ÀÌµ¿ ¹üÀ§
+		.startPosX = 95,	// ÃÊ±â X ÁÂÇ¥
+		.moveNum = 64,		// ÀÌµ¿ ¹üÀ§
 		.dir = E_Right,
 	};
 
@@ -118,7 +118,7 @@ void InitCrab()
 		.pos.x = 170,
 		.pos.y = 21,
 		.startPosX = 170,
-		.moveNum = 30,
+		.moveNum = 64,
 		.dir = E_Right,
 	};
 
@@ -126,10 +126,10 @@ void InitCrab()
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
-		.pos.x = 285,
+		.pos.x = 277,
 		.pos.y = 21,
-		.startPosX = 285,
-		.moveNum = 30,
+		.startPosX = 277,
+		.moveNum = 92,
 		.dir = E_Right,
 	};
 
@@ -138,10 +138,10 @@ void InitCrab()
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
-		.pos.x = 70,
+		.pos.x = 72,
 		.pos.y = 21,
-		.startPosX = 70,
-		.moveNum = 30,
+		.startPosX = 72,
+		.moveNum = 60,
 		.dir = E_Right,
 	};
 
@@ -152,7 +152,7 @@ void InitCrab()
 		.pos.x = 170,
 		.pos.y = 21,
 		.startPosX = 170,
-		.moveNum = 30,
+		.moveNum = 61,
 		.dir = E_Right,
 	};
 
@@ -160,10 +160,10 @@ void InitCrab()
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
-		.pos.x = 280,
+		.pos.x = 246,
 		.pos.y = 21,
-		.startPosX = 280,
-		.moveNum = 30,
+		.startPosX = 246,
+		.moveNum = 86,
 		.dir = E_Right,
 	};
 
@@ -174,7 +174,7 @@ void InitCrab()
 		.pos.x = 440,
 		.pos.y = 21,
 		.startPosX = 440,
-		.moveNum = 30,
+		.moveNum = 125,
 		.dir = E_Right,
 	};
 
@@ -183,10 +183,10 @@ void InitCrab()
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
-		.pos.x = 120,
+		.pos.x = 80,
 		.pos.y = 13,
-		.startPosX = 120,
-		.moveNum = 30,
+		.startPosX = 80,
+		.moveNum = 96,
 		.dir = E_Right,
 	};
 
@@ -194,10 +194,10 @@ void InitCrab()
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
-		.pos.x = 190,
+		.pos.x = 187,
 		.pos.y = 21,
-		.startPosX = 190,
-		.moveNum = 30,
+		.startPosX = 187,
+		.moveNum = 75,
 		.dir = E_Right,
 	};
 
@@ -205,10 +205,10 @@ void InitCrab()
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
-		.pos.x = 400,
+		.pos.x = 373,
 		.pos.y = 21,
-		.startPosX = 400,
-		.moveNum = 30,
+		.startPosX = 373,
+		.moveNum = 73,
 		.dir = E_Right,
 	};
 
@@ -216,10 +216,10 @@ void InitCrab()
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
-		.pos.x = 575,
+		.pos.x = 574,
 		.pos.y = 17,
-		.startPosX = 575,
-		.moveNum = 30,
+		.startPosX = 574,
+		.moveNum = 60,
 		.dir = E_Right,
 	};
 
@@ -230,7 +230,7 @@ void InitCrab()
 		.pos.x = 580,
 		.pos.y = 7,
 		.startPosX = 580,
-		.moveNum = 30,
+		.moveNum = 47,
 		.dir = E_Right,
 	};
 
@@ -239,10 +239,10 @@ void InitCrab()
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
-		.pos.x = 95,
+		.pos.x = 76,
 		.pos.y = 10,
-		.startPosX = 95,
-		.moveNum = 30,
+		.startPosX = 76,
+		.moveNum = 76,
 		.dir = E_Right,
 	};
 
@@ -253,7 +253,7 @@ void InitCrab()
 		.pos.x = 150,
 		.pos.y = 21,
 		.startPosX = 150,
-		.moveNum = 30,
+		.moveNum = 41,
 		.dir = E_Right,
 	};
 
@@ -261,10 +261,10 @@ void InitCrab()
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
-		.pos.x = 410,
+		.pos.x = 404,
 		.pos.y = 21,
-		.startPosX = 410,
-		.moveNum = 30,
+		.startPosX = 404,
+		.moveNum = 50,
 		.dir = E_Right,
 	};
 
@@ -272,10 +272,21 @@ void InitCrab()
 	{
 		.mon = g_CrabMon,
 		.skill = g_CrabSkill,
-		.pos.x = 500,
+		.pos.x = 546,
 		.pos.y = 21,
-		.startPosX = 500,
-		.moveNum = 30,
+		.startPosX = 491,
+		.moveNum = 55,
+		.dir = E_Right,
+	};
+
+	g_CrabList[E_Sea2][g_CrabListIdx[E_Sea2]++] = (Crab)
+	{
+		.mon = g_CrabMon,
+		.skill = g_CrabSkill,
+		.pos.x = 491,
+		.pos.y = 16,
+		.startPosX = 491,
+		.moveNum = 55,
 		.dir = E_Right,
 	};
 
@@ -286,7 +297,7 @@ void InitCrab()
 		.pos.x = 610,
 		.pos.y = 21,
 		.startPosX = 610,
-		.moveNum = 30,
+		.moveNum = 62,
 		.dir = E_Right,
 	};
 }

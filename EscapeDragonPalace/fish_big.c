@@ -83,11 +83,11 @@ void InitBigFish()
 	g_BigFishList[E_Jail][g_BigFishListIdx[E_Jail]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 100,		// X 좌표
+		.pos.x = 95,		// X 좌표
 		.pos.y = 11,		// Y 좌표
-		.startPosX = 100,	// 초기 X 좌표
+		.startPosX = 95,	// 초기 X 좌표
 		.attack = BIGFISH_ATTACK,	// 공격력
-		.moveNum = 30,		// 이동 범위
+		.moveNum = 62,		// 이동 범위
 		.dir = E_Right,		// 바라보는 방향
 	};
 
@@ -98,40 +98,40 @@ void InitBigFish()
 		.pos.y = 11,
 		.startPosX = 170,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 62,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_Jail][g_BigFishListIdx[E_Jail]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 300,
+		.pos.x = 277,
 		.pos.y = 11,
-		.startPosX = 300,
+		.startPosX = 277,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 74,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_Jail][g_BigFishListIdx[E_Jail]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 500,
+		.pos.x = 490,
 		.pos.y = 12,
-		.startPosX = 500,
+		.startPosX = 490,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 57,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_Jail][g_BigFishListIdx[E_Jail]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 500,
+		.pos.x = 547,
 		.pos.y = 21,
-		.startPosX = 500,
+		.startPosX = 490,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 57,
 		.dir = E_Right,
 	};
 
@@ -139,44 +139,44 @@ void InitBigFish()
 	g_BigFishList[E_DragonPalace][g_BigFishListIdx[E_DragonPalace]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 70,
+		.pos.x = 71,
 		.pos.y = 14,
-		.startPosX = 70,
+		.startPosX = 71,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 59,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_DragonPalace][g_BigFishListIdx[E_DragonPalace]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 170,
+		.pos.x = 169,
 		.pos.y = 14,
-		.startPosX = 170,
+		.startPosX = 169,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 36,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_DragonPalace][g_BigFishListIdx[E_DragonPalace]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 280,
+		.pos.x = 245,
 		.pos.y = 11,
-		.startPosX = 280,
+		.startPosX = 245,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 84,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_DragonPalace][g_BigFishListIdx[E_DragonPalace]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 520,
+		.pos.x = 514,
 		.pos.y = 11,
-		.startPosX = 520,
+		.startPosX = 514,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 52,
 		.dir = E_Right,
 	};
 
@@ -184,55 +184,55 @@ void InitBigFish()
 	g_BigFishList[E_Sea1][g_BigFishListIdx[E_Sea1]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 120,
+		.pos.x = 80,
 		.pos.y = 21,
-		.startPosX = 120,
+		.startPosX = 80,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 94,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_Sea1][g_BigFishListIdx[E_Sea1]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 190,
+		.pos.x = 187,
 		.pos.y = 12,
-		.startPosX = 190,
+		.startPosX = 187,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 72,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_Sea1][g_BigFishListIdx[E_Sea1]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 300,
+		.pos.x = 290,
 		.pos.y = 21,
-		.startPosX = 300,
+		.startPosX = 290,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 56,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_Sea1][g_BigFishListIdx[E_Sea1]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 400,
+		.pos.x = 373,
 		.pos.y = 13,
-		.startPosX = 400,
+		.startPosX = 373,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 72,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_Sea1][g_BigFishListIdx[E_Sea1]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 480,
+		.pos.x = 458,
 		.pos.y = 21,
-		.startPosX = 480,
+		.startPosX = 458,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 119,
 		.dir = E_Right,
 	};
 
@@ -240,33 +240,33 @@ void InitBigFish()
 	g_BigFishList[E_Sea2][g_BigFishListIdx[E_Sea2]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 260,
+		.pos.x = 231,
 		.pos.y = 21,
-		.startPosX = 260,
+		.startPosX = 231,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 86,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_Sea2][g_BigFishListIdx[E_Sea2]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 320,
+		.pos.x = 313,
 		.pos.y = 16,
-		.startPosX = 320,
+		.startPosX = 313,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 79,
 		.dir = E_Right,
 	};
 
 	g_BigFishList[E_Sea2][g_BigFishListIdx[E_Sea2]++] = (BigFish)
 	{
 		.mon = g_BigFishMon,
-		.pos.x = 410,
+		.pos.x = 401,
 		.pos.y = 16,
-		.startPosX = 410,
+		.startPosX = 401,
 		.attack = BIGFISH_ATTACK,
-		.moveNum = 30,
+		.moveNum = 51,
 		.dir = E_Right,
 	};
 }
