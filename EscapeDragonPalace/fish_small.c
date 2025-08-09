@@ -87,14 +87,14 @@ void InitSmallFish()
 		.hp = 1,			// 체력
 		.isDamaged = false,	// 피격 상태 (무적 여부)
 		.lastHitTime = 0,	// 마지막 피격 시간
-		.speed = 1.66,		// 이동 속도
+		.speed = 1.6,		// 이동 속도
 	};
 
 	// 감옥
 	g_SmallFishList[E_Jail][g_SmallFishListIdx[E_Jail]++] = (SmallFish)
 	{
 		.mon = g_SmallFishMon,
-		.pos.x = 450,	// X 좌표
+		.pos.x = 470,	// X 좌표
 		.pos.y = 18,	// Y 좌표
 		.attack = SMALLFISH_ATTACK,	// 공격력
 		.isRush = false
@@ -104,7 +104,7 @@ void InitSmallFish()
 	g_SmallFishList[E_DragonPalace][g_SmallFishListIdx[E_DragonPalace]++] = (SmallFish)
 	{
 		.mon = g_SmallFishMon,
-		.pos.x = 360,
+		.pos.x = 375,
 		.pos.y = 23,
 		.attack = SMALLFISH_ATTACK,
 		.isRush = false
@@ -132,7 +132,7 @@ void InitSmallFish()
 	g_SmallFishList[E_Sea1][g_SmallFishListIdx[E_Sea1]++] = (SmallFish)
 	{
 		.mon = g_SmallFishMon,
-		.pos.x = 600,
+		.pos.x = 620,
 		.pos.y = 23,
 		.attack = SMALLFISH_ATTACK,
 		.isRush = false
@@ -142,7 +142,7 @@ void InitSmallFish()
 	g_SmallFishList[E_Sea2][g_SmallFishListIdx[E_Sea2]++] = (SmallFish)
 	{
 		.mon = g_SmallFishMon,
-		.pos.x = 233,
+		.pos.x = 236,
 		.pos.y = 12,
 		.attack = SMALLFISH_ATTACK,
 		.isRush = false
@@ -151,7 +151,7 @@ void InitSmallFish()
 	g_SmallFishList[E_Sea2][g_SmallFishListIdx[E_Sea2]++] = (SmallFish)
 	{
 		.mon = g_SmallFishMon,
-		.pos.x = 413,
+		.pos.x = 412,
 		.pos.y = 13,
 		.attack = SMALLFISH_ATTACK,
 		.isRush = false

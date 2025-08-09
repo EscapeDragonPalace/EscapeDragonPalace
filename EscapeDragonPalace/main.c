@@ -12,24 +12,30 @@ void Draw() // 화면 그리기
 {
     // 게임 시작 전
     if (!GetGameStart()) {
+        _SetColor(E_White); // 문구 색 변경
         GameStartScreen();  // 게임시작 화면 출력
         // 문구 이펙트 효과
         if (GetGameStartText()) 
-            _DrawText(23, 21, "아무 키나 눌러 게임 시작하기");
+            _SetColor(E_White); // 문구 색 변경
         else 
-            _DrawText(21, 21, "                               ");
+            _SetColor(E_Gray); // 문구 색 변경
+        _DrawText(23, 21, "아무 키나 눌러 게임 시작하기");
+
     }
     // 게임 시작 후
     else {
         // 게임오버했을 때
         if (GetIsGameOver())
         {
+            _SetColor(E_White); // 문구 색 변경
             GameOverScreen();   // 게임오버 화면 출력
             // 문구 이펙트 효과
             if (GetGameOverText())
-                _DrawText(14, 21, "아무 키나 눌러 시작화면으로 돌아가기");
+                _SetColor(E_White); // 문구 색 변경
             else
-                _DrawText(14, 21, "                                     ");
+                _SetColor(E_Gray); // 문구 색 변경
+            _DrawText(14, 21, "아무 키나 눌러 시작화면으로 돌아가기");
+
         }
         // 스테이지 클리어
         else if (StageClear())
