@@ -49,6 +49,21 @@ void CheckAttacking()
 }
 
 // 꽃게 피격 처리
+void HitCrab(Weapon* weapon, unsigned int now) {
+	for (int idx = 0; idx < g_CrabListIdx[GetMapStatus()]; idx++)
+	{
+		Crab tempCrab = g_CrabList[GetMapStatus()][idx];
+		if (tempCrab.mon.alive) return;
+
+		tempCrab.mon.hp -= weapon->attack;
+		tempCrab.mon.isDamaged = true;	// 무적 상태 진입
+		tempCrab.mon.lastHitTime = now;	// 피격 시간 기록
+
+		if (tempCrab.mon.hp <= 0) {
+			tempCrab.mon.alive = false;	// 체력이 0 이하가 되면 사망 처리
+		}
+	}
+}
 
 // 꽃게 그리기
 void DrawCrab()

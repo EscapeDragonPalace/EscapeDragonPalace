@@ -334,13 +334,13 @@ void UpdateBuffs()
 {
 	if (speedBuffs.active && GetTickCount() >= speedBuffs.endTime)
 	{
-		player.Speed = RABBIT_SPEED; // 원래대로 감소
+		player.Speed -= RABBIT_SPEED; // 원래대로 감소
 		speedBuffs.active = false;
 	}
 
 	if (slowDebuffs.active && GetTickCount() >= slowDebuffs.endTime)
 	{
-		player.Speed = RABBIT_SPEED;	// 원래대로 증가
+		player.Speed += RABBIT_SPEED;	// 원래대로 증가
 		slowDebuffs.active = false;
 	}
 }
