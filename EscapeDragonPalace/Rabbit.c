@@ -90,6 +90,8 @@ int centerX;
 int baseY;
 int jumpHeight;
 int animFramesTotal; // 전체 애니메이션 길이 (up+down)
+int PrevPlayerHealth;
+
 
 float amount;
 
@@ -297,6 +299,9 @@ void CheckItemPickup()
 				{
 					g_ItemList[i].isHeld = true;  // 화면에 안 보이게 처리
 					player.Health += LIFEUP;	// 체력 증가
+
+					PrevPlayerHealth = player.Health; //체력 저장
+
 				}
 				break;
 			case E_ITEM_SPEED: // 이동속도 증가 (공기방울)
@@ -874,10 +879,6 @@ void UpdatePlayer() // 플레이어 이동 키 입력 처리
 
 	ClimbLadder(); // 플레이어가 사다리 근처에 있는지 체크
 }
-
-bool Isplayerhit; // 플레이어가 피격당했는지 여부
-int PrevPlayerHealth;
-
 
 char Color = E_White; // 플레이어 색상
 
