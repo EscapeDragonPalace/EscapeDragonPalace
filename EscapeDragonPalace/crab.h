@@ -38,3 +38,4 @@ const static char g_CrabGraphic[2][CRAB_HEIGHT][CRAB_WIDTH] = {
 void InitCrab();    // 초기화
 void DrawCrab();    // 그리기
 void UpdateCrab(unsigned long now);  // 업데이트
+void HitCrab();     // 꽃게 피격 처리

@@ -1,5 +1,6 @@
 #pragma once
 #include "init.h"
+#include "weapon.h"
 #include "map.h"
 
 // ¸ÞÅ©·Î

@@ -59,9 +59,6 @@ void Draw() // 화면 그리기
             else
             {
                 DrawMapBG(); // 맵 배경 그리기
-                _DrawText(3, 3, player.HeldWeapon->sprite); // 무기 그림그리기
-                DrawHealth();   // 체력바 그리기
-
 
                 // 스테이지 시작후 아이템 세팅이 안 되어있을 때
                 if (!GetMapSetting()) {
@@ -86,6 +83,9 @@ void Draw() // 화면 그리기
 
             // 플레이어 출력
             DrawPlayer();
+
+            _DrawText(3, 3, player.HeldWeapon->sprite); // 무기 그림그리기
+            DrawHealth();   // 체력바 그리기
 
             // 맵 틀 그리기
             DrawMap();

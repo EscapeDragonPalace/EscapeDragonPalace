@@ -37,12 +37,15 @@ void FMapSetting() {
 // ¸Ê Æ² ±×¸®±â
 void DrawMap()
 {
-	_DrawText(0, 0, "==============================================================================");
-	_DrawText(0, SCREEN_HEIGHT - 1, "==============================================================================");
 	for (int y = 0; y < SCREEN_HEIGHT; y++)
 	{
-		_DrawText(0, y, "¡«");
-		_DrawText(78, y, "¡«");
+		for (int x = 0; x < SCREEN_WIDTH; x++)
+		{
+			if (g_Map[y][x] != ' ')
+			{
+				_DrawText(x, y, (char[]) { g_Map[y][x], 0 });
+			}
+		}
 	}
 }
 
