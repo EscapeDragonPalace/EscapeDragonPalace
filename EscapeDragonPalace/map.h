@@ -326,4 +326,4 @@ int GetPlusX(); // X 증가값 불러오기
 void SetPlusX(int src); // X값 변경하기
 bool GetMapSetting();
 void SetMapSetting(bool src); 
-void FMapSetting();
+void ItemSetting();

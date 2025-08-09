@@ -1,5 +1,6 @@
 #include "init.h"
 #include "crab.h"
+#include "Rabbit.h"
 
 // 전역 변수
 Monster g_CrabMon;	// 꽃게 몬스터 구조체 공통 설정
@@ -52,50 +53,56 @@ void CheckAttacking()
 }
 
 // 꽃게 피격 처리
-void HitCrab(Weapon* weapon, unsigned int now) {
+//void HitCrab(unsigned int now) {
+//	for (int idx = 0; idx < g_CrabListIdx[GetMapStatus()]; idx++)
+//	{
+//		Crab tempCrab = g_CrabList[GetMapStatus()][idx];
+//		if (tempCrab.mon.alive) return;
+//
+//		tempCrab.mon.hp -= player.HeldWeapon->attack;
+//		tempCrab.mon.isDamaged = true;	// 무적 상태 진입
+//		tempCrab.mon.lastHitTime = now;	// 피격 시간 기록
+//
+//		if (tempCrab.mon.hp <= 0) {
+//			tempCrab.mon.alive = false;	// 체력이 0 이하가 되면 사망 처리
+//		}
+//	}
+//}
+
+// 꽃게 > 플레이어 공격하는 함수
+void CrabHitPlayer() {
 	for (int idx = 0; idx < g_CrabListIdx[GetMapStatus()]; idx++)
 	{
 		Crab tempCrab = g_CrabList[GetMapStatus()][idx];
-		if (tempCrab.mon.alive) return;
+		int posX = tempCrab.pos.x + GetPlusX();
+		int posY = tempCrab.pos.y;
+		Rect PlayerPos = GetPlayerRect();
+		Rect MosterPos = { posX, posY, 1, 3 };
+		DWORD now = GetTickCount();
+		static int count = 0;
 
-		tempCrab.mon.hp -= weapon->attack;
-		tempCrab.mon.isDamaged = true;	// 무적 상태 진입
-		tempCrab.mon.lastHitTime = now;	// 피격 시간 기록
+		if (IsOverlap(PlayerPos, MosterPos))
+			isBleeding = true; // 플레이어가 꽃게와 겹치면 출혈 상태로 변경
 
-		if (tempCrab.mon.hp <= 0) {
-			tempCrab.mon.alive = false;	// 체력이 0 이하가 되면 사망 처리
+		if (isBleeding == false)
+			return;
+
+		if (count == tempCrab.skill.attackCnt) {
+			count = 0; // 카운트 초기화
+			isBleeding = false; // 3번 공격 후 출혈 상태 해제
 		}
+
+		if (now - tempCrab.mon.lastHitTime < INVINCIBLE_TIME) {
+			return; // 아직 때린지 1초가 안지났으면 안때림
+		}
+		//출혈 데미지
+
+		player.Health -= tempCrab.skill.attack; // 플레이어 체력 1 감소
+
+		count++;
+		tempCrab.mon.lastHitTime = now; // 마지막 피격 시간 갱신
 	}
 }
-
-// 꽃게 > 플레이어 공격하는 함수
-//void CrabHitPlayer(int posX, int posY) {
-//	Rect PlayerPos = GetPlayerRect();
-//	Rect MosterPos = { posX, posY, 1, 3 };
-//	DWORD now = GetTickCount();
-//	static int count = 0;
-//
-//	if (IsOverlap(PlayerPos, MosterPos))
-//		isBleeding = true; // 플레이어가 꽃게와 겹치면 출혈 상태로 변경
-//
-//	if (isBleeding == false)
-//		return;
-//
-//	if (count == 3) {
-//		count = 0; // 카운트 초기화
-//		isBleeding = false; // 3번 공격 후 출혈 상태 해제
-//	}
-//
-//	if (now - monsterList[E_MONSTER_CRAB].lastHitTime < INVINCIBLE_TIME) {
-//		return; // 아직 때린지 1초가 안지났으면 안때림
-//	}
-//	//출혈 데미지
-//
-//	player.Health -= E_CRAB_ATTACK; // 플레이어 체력 1 감소
-//
-//	count++;
-//	monsterList[E_MONSTER_CRAB].lastHitTime = now; // 마지막 피격 시간 갱신
-//}
 
 // 꽃게 그리기
 void DrawCrab()

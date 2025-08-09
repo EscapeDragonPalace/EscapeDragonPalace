@@ -17,7 +17,7 @@ void SetMapSetting(bool src)
 	MapSetting = src;
 }
 
-void FMapSetting() {
+void ItemSetting() {
 
 	for (int i = 0; i < g_ItemIdx; i++)
 	{

@@ -6,6 +6,9 @@
 #define SMALLFISH_ATTACK 1	// 작은 물고기 공격력 (반 칸)
 #define SMALLFISH_CNT 8	// 작은 물고기 배열 수
 
+// 전역 변수
+static char g_SmallFishGraphic[SMALLFISH_WIDTH] = "<')))><";
+
 // 작은 물고기
 typedef struct SmallFish
 {
@@ -14,9 +17,6 @@ typedef struct SmallFish
 	int attack;		    // 공격력
 	bool isRush;
 } SmallFish;
-
-// 전역 변수
-static char g_SmallFishGraphic[SMALLFISH_WIDTH] = "<')))><";
 
 // 함수
 void InitSmallFish();	// 초기화
