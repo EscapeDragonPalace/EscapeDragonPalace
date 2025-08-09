@@ -9,6 +9,7 @@
 
 #define RabbitX 25 // Rabbit char 가로 크기
 #define RabbitY 3 // Rabbit char 세로 크기
+#define RABBIT_SPEED 1	// Rabbit 이동 속도
 
 #define JUMP_POWER -2.5f // 점프 높이 (음수로 갈 수록 점프 높아짐)
 #define GRAVITY 0.5f // 중력 가속도
