@@ -83,6 +83,7 @@ void Draw() // 화면 그리기
 
             // 플레이어 출력
             DrawPlayer();
+            _SetColor(E_White);
 
             _DrawText(3, 3, player.HeldWeapon->sprite); // 무기 그림그리기
             DrawHealth();   // 체력바 그리기
@@ -152,6 +153,8 @@ void main()
 
             if (GetIsGameOver())
             {
+                system("cls"); // 화면 지우기
+
                 ReturnStartScreen();    // 게임오버 화면 출력
                 break;
             }
