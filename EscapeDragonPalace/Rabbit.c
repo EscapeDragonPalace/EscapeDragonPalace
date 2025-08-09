@@ -432,8 +432,8 @@ void GetInput() // GetAsyncKeyState로 다중 키 입력 감지
 	g_KeyD = (GetAsyncKeyState('D') & 0x8000);
 	g_KeyS = (GetAsyncKeyState('S') & 0x8000);
 
-	// 마우스 왼쪽 버튼 클릭 여부
-	g_MouseClick = (GetAsyncKeyState(VK_LBUTTON) & 0x8000);
+	// 마우스 오른쪽 버튼 클릭 여부
+	g_MouseClick = (GetAsyncKeyState(VK_RBUTTON) & 0x8000);
 
 }
 
