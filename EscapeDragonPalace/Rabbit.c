@@ -307,19 +307,22 @@ void CheckItemPickup()
 						speedBuffs.endTime = GetTickCount() + DURATION;
 						player.Speed += SPEEDUP; // 즉시 적용
 					}
+
 					speedBuffs.endTime += DURATION;  // 효과 지속 중 다시 먹었을 경우 시간 초기화
 
 				}
 				break;
 			case E_ITEM_DEBUFF:	// 디버프 (조개)
 				g_ItemList[i].isHeld = true;  // 화면에 안 보이게 처리
+
 				if (!slowDebuffs.active)
 				{
 					slowDebuffs.active = true;
 					slowDebuffs.endTime = GetTickCount() + DURATION;
-					player.Health -= LIFEDOWN;
-					player.Speed -= SPEEDDOWN;
+					player.Speed -= SPEEDDOWN;	// 이동 속도는 누적 X
 				}
+
+				player.Health -= LIFEDOWN;	// 체력은 누적으로 닳게
 				slowDebuffs.endTime += DURATION;
 			}
 		}
@@ -331,13 +334,13 @@ void UpdateBuffs()
 {
 	if (speedBuffs.active && GetTickCount() >= speedBuffs.endTime)
 	{
-		player.Speed -= SPEEDUP; // 원래대로 감소
+		player.Speed = RABBIT_SPEED; // 원래대로 감소
 		speedBuffs.active = false;
 	}
 
 	if (slowDebuffs.active && GetTickCount() >= slowDebuffs.endTime)
 	{
-		player.Speed += SPEEDDOWN;	// 원래대로 증가
+		player.Speed = RABBIT_SPEED;	// 원래대로 증가
 		slowDebuffs.active = false;
 	}
 }
@@ -933,7 +936,7 @@ void InitPlayer() // 초기화
 	player.Pos.x = RabbitXPos;
 	player.Pos.y = RabbitYPos;
 	player.Speed = 1.2f;
-	player.Health = 1;
+	player.Health = 10;
 	player.VelY = 0.0f;
 	player.IsJumping = false;
 	player.Direction = 0;

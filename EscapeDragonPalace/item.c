@@ -91,10 +91,7 @@ void DrawItem() {
 						// 아이템 위치가 화면 내에 있을 때만 출력
 						if (0 <= tempX + col && SCREEN_WIDTH >= tempX + col)
 						{
-							// Q: 이건 왜 쓴거야??
-							//if (tempX + 7 > 0 && tempX < SCREEN_WIDTH) {
 							_DrawText(tempX + col, g_ItemList[i].y + row, (char[]) { (*sprite)[g_Frame][row][col], 0 });
-							//}
 						}
 					}
 				}
