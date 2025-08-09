@@ -62,7 +62,7 @@ void Draw() // 화면 그리기
 
                 // 스테이지 시작후 아이템 세팅이 안 되어있을 때
                 if (!GetMapSetting()) {
-                    FMapSetting();
+                    ItemSetting();
                 }
                 
                 // 아이템 출력
