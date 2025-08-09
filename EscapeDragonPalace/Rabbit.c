@@ -115,6 +115,8 @@ bool g_MouseClick = false;  // 마우스 클릭 여부
 
 bool IsDamaged = false; // 플레이어가 피격당했는지 여부
 
+bool IsNearLadder = false; // 플레이어가 사다리 근처에 있는지 여부
+
 // --------------------------------------------------
 
 bool SetMapEnd(bool src)
@@ -696,6 +698,47 @@ void moveFN()
 	}
 }
 
+void ClimbLadder()
+{
+	int PxL = (int)(player.Pos.x + 6);
+	int PxR = (int)(player.Pos.x + 14);
+	int Py = (int)player.Pos.y;
+
+	// x좌표 경계 보정
+	if (PxL < 0) PxL = 0;
+	if (PxR >= MAP_WIDTH) PxR = MAP_WIDTH - 1;
+
+	for (int y = Py; y < SCREEN_HEIGHT; y++)
+	{
+		for (int x = PxL; x <= PxR; x++)
+		{
+			int mapStatus = GetMapStatus();
+
+			if (mapStatus < 0 || mapStatus >= 5 || Py < 0 || Py >= 25)
+				return;
+
+			if (g_StagePlatform[mapStatus][Py][x] == '_')
+			{
+				IsNearLadder = true; // 사다리 근처에 있으면 true
+
+				if (!player.IsJumping && CheckGround())
+				{
+					if (GetAsyncKeyState('R') & 0x8000)
+					{// 사다리 근처에서 R키를 누르면 사다리 올라가기
+						IsNearLadder = false;
+						player.Pos.y -= 8.0f; // 사다리 위로 올라가기
+					}
+				}
+
+				return; // 사다리 근처에 있으면 함수 종료
+			}
+		}
+	}
+
+
+	IsNearLadder = false;
+}
+
 void ISOnGoal()
 {
 	int pxL = (int)(player.Pos.x + 8) + GetPlusX();
@@ -793,10 +836,18 @@ void UpdatePlayer() // 플레이어 이동 키 입력 처리
 	AttackFN();
 
 	moveFN();
+
+	ClimbLadder(); // 플레이어가 사다리 근처에 있는지 체크
 }
 
 void DrawPlayer()
 {
+
+	if (IsNearLadder)
+	{
+		_DrawText(player.Pos.x - 3, player.Pos.y - 3, "'R' 키를 눌러 위로 올라가기");
+	}
+
 	int idx;
 	int dir = player.Direction;
 
