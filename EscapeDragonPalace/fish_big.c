@@ -23,7 +23,7 @@ void UpdateBigFish(unsigned long now)
 		}
 
 		// 몬스터 이동
-		tempBigFish[idx].pos.x += (tempBigFish[idx].dir == E_Right) ? 1 : -1;
+		tempBigFish[idx].pos.x += (tempBigFish[idx].dir == E_Right) ? g_BigFishMon.speed : -g_BigFishMon.speed;
 
 		// 정해진 범위 안에서 이동
 		if (tempBigFish[idx].pos.x <= tempBigFish[idx].startPosX)
@@ -76,7 +76,7 @@ void InitBigFish()
 		.hp = 4,			// 체력
 		.isDamaged = false,	// 피격 상태 (무적 여부)
 		.lastHitTime = 0,	// 마지막 피격 시간
-		.speed = 1.5,		// 이동 속도
+		.speed = 0.6,		// 이동 속도
 	};
 
 	// 감옥
