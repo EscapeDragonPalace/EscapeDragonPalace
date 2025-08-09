@@ -88,6 +88,7 @@ void DrawPlayer();
 void DrawHealth();
 void InitPlayer();
 void ClimbLadder();
+void DrawBuffNDebuff();
 
 
 
