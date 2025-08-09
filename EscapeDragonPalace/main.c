@@ -86,6 +86,7 @@ void Draw() // 화면 그리기
 
             _DrawText(3, 3, player.HeldWeapon->sprite); // 무기 그림그리기
             DrawHealth();   // 체력바 그리기
+            DrawBuffNDebuff();
 
             // 맵 틀 그리기
             DrawMap();

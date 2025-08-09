@@ -304,7 +304,7 @@ void CheckItemPickup()
 					if (!speedBuffs.active)
 					{
 						speedBuffs.active = true;
-						speedBuffs.endTime = GetTickCount() + DURATION;
+						speedBuffs.endTime = GetTickCount();
 						player.Speed += SPEEDUP; // 즉시 적용
 					}
 
@@ -318,12 +318,13 @@ void CheckItemPickup()
 				if (!slowDebuffs.active)
 				{
 					slowDebuffs.active = true;
-					slowDebuffs.endTime = GetTickCount() + DURATION;
+					slowDebuffs.endTime = GetTickCount();
 					player.Speed -= SPEEDDOWN;	// 이동 속도는 누적 X
 				}
 
 				player.Health -= LIFEDOWN;	// 체력은 누적으로 닳게
-				slowDebuffs.endTime += DURATION;
+				slowDebuffs.endTime += DURATION;  // 효과 지속 중 다시 먹었을 경우 시간 초기화
+
 			}
 		}
 	}
@@ -334,15 +335,43 @@ void UpdateBuffs()
 {
 	if (speedBuffs.active && GetTickCount() >= speedBuffs.endTime)
 	{
-		player.Speed -= RABBIT_SPEED; // 원래대로 감소
+		player.Speed -= SPEEDUP; // 원래대로 감소
 		speedBuffs.active = false;
 	}
 
 	if (slowDebuffs.active && GetTickCount() >= slowDebuffs.endTime)
 	{
-		player.Speed += RABBIT_SPEED;	// 원래대로 증가
+		player.Speed += SPEEDDOWN;	// 원래대로 증가
 		slowDebuffs.active = false;
 	}
+}
+
+void DrawBuffNDebuff() {
+	char buf[32];
+	if (speedBuffs.active) {
+		if (slowDebuffs.active) {
+			_DrawText(59, 2, "속도 버프: ");
+			snprintf(buf, sizeof(buf), "%.1fs", (float)(speedBuffs.endTime - GetTickCount()) / 1000); // ms → 초 변환
+			_DrawText(71, 2, buf);
+			_DrawText(59, 3, "속도 디버프: ");
+			snprintf(buf, sizeof(buf), "%.1fs", (float)(slowDebuffs.endTime - GetTickCount()) / 1000);
+			_DrawText(73, 3, buf);
+		}
+		else {
+			_DrawText(59, 2, "속도 버프: ");
+			snprintf(buf, sizeof(buf), "%.1fs", (float)(speedBuffs.endTime - GetTickCount()) / 1000); // ms → 초 변환
+			_DrawText(71, 2, buf);
+		}
+	}
+	else {
+		if (slowDebuffs.active) {
+			_DrawText(59, 2, "속도 디버프: ");
+			snprintf(buf, sizeof(buf), "%.1fs", (float)(slowDebuffs.endTime - GetTickCount()) / 1000);
+			_DrawText(73, 2, buf);
+		}
+	}
+
+
 }
 
 void ClearRabbitAt(int x, int y)
