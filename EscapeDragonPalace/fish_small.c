@@ -26,7 +26,7 @@ void UpdateSmallFish(unsigned long now)
 		}
 		if (tempSmallFish[idx].isRush) {
 			// 몬스터 이동
-			tempSmallFish[idx].pos.x -= 1;
+			tempSmallFish[idx].pos.x -= g_SmallFishMon.speed;
 
 			// 몬스터가 왼쪽 화면 밖으로 넘어갔을 경우 죽음 처리
 			if (tempSmallFish[idx].pos.x <= 0)
@@ -87,7 +87,7 @@ void InitSmallFish()
 		.hp = 1,			// 체력
 		.isDamaged = false,	// 피격 상태 (무적 여부)
 		.lastHitTime = 0,	// 마지막 피격 시간
-		.speed = 1.5,		// 이동 속도
+		.speed = 1.66,		// 이동 속도
 	};
 
 	// 감옥
