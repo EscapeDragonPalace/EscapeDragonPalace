@@ -25,7 +25,7 @@ void UpdateCrab(unsigned long now)
 		}
 
 		// 몬스터 이동
-		tempCrab[idx].pos.x += (tempCrab[idx].dir == E_Right) ? 1 : -1;
+		tempCrab[idx].pos.x += (tempCrab[idx].dir == E_Right) ? g_CrabMon.speed : -g_CrabMon.speed;
 
 		// 정해진 범위 안에서 이동
 		if (tempCrab[idx].pos.x <= tempCrab[idx].startPosX)
@@ -89,7 +89,7 @@ void InitCrab()
 		.hp = 5,			// 체력
 		.isDamaged = false,	// 피격 상태 (무적 여부)
 		.lastHitTime = 0,	// 마지막 피격 시간
-		.speed = 1.5,		// 이동 속도
+		.speed = 0.8,		// 이동 속도
 	};
 	g_CrabSkill = (Skill)
 	{
