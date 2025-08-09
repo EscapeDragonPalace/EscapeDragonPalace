@@ -1,5 +1,6 @@
 #include "init.h"
 #include "fish_big.h"
+#include "Rabbit.h"
 
 Monster g_BigFishMon;	// 큰 물고기 몬스터 구조체 공통 설정
 BigFish g_BigFishList[STAGE_CNT][BIGFISH_CNT];	// 큰 물고기 포인트 배열
@@ -11,7 +12,7 @@ void UpdateBigFish(unsigned long now)
 	// 현재 맵의 몬스터 데이터 불러오기
 	BigFish* tempBigFish = g_BigFishList[GetMapStatus()];
 	// 현재 맵에 있는 몬스터 수만큼 반복하기
-	for(int idx = 0; idx < g_BigFishListIdx[GetMapStatus()]; idx++)
+	for (int idx = 0; idx < g_BigFishListIdx[GetMapStatus()]; idx++)
 	{
 		// 몬스터가 죽었을 경우 넘어가기
 		if (!tempBigFish[idx].mon.alive) continue;
@@ -48,7 +49,7 @@ void DrawBigFish()
 		_SetColor(g_BigFishList[GetMapStatus()][g_BigFishListIdx[GetMapStatus()]].mon.isDamaged ? E_BrightRed : E_BrightBlue);
 
 		int posX = tempBigFish[idx].pos.x - GetPlusX();
-		for(int y = 0; y < BIGFISH_HEIGHT; y++)
+		for (int y = 0; y < BIGFISH_HEIGHT; y++)
 		{
 			for (int x = 0; x < BIGFISH_WIDTH; x++)
 			{
@@ -57,12 +58,40 @@ void DrawBigFish()
 					// 화면 범위 내에 있을 경우 그리기
 					if (0 <= posX + x && SCREEN_WIDTH > posX + x)
 					{
-						_DrawText(posX + x, tempBigFish[idx].pos.y + y, 
-							(char[]) { g_BigFishGraphic[tempBigFish[idx].dir][y][x], 0 });
+						_DrawText(posX + x, tempBigFish[idx].pos.y + y,
+							(char[]) {
+							g_BigFishGraphic[tempBigFish[idx].dir][y][x], 0
+						});
 					}
 				}
 			}
 		}
+	}
+}
+
+//물고기 > 플레이어 공격하는 함수
+void BigFishHitPlayer()
+{
+	for (int idx = 0; idx < g_BigFishListIdx[GetMapStatus()]; idx++)
+	{
+		BigFish tempFish = g_BigFishList[GetMapStatus()][idx];
+		int posX = tempFish.pos.x + GetPlusX();
+		int posY = tempFish.pos.y;
+		Rect PlayerPos = { player.Pos.x + GetPlusX(), player.Pos.y, 8, 3};
+		Rect MosterPos = { posX, posY, 3, 3 };
+		DWORD now = GetTickCount();
+
+		if ((IsOverlap(PlayerPos, MosterPos)) == false)
+			return;
+
+		// 무적 시간 체크
+		if (now - tempFish.mon.lastHitTime < INVINCIBLE_TIME) {
+			return; // 아직 무적 상태면 데미지 무시
+		}
+
+		player.Health -= tempFish.attack; // 플레이어 체력 2 감소
+
+		tempFish.mon.lastHitTime = now; // 마지막 피격 시간 갱신
 	}
 }
 
