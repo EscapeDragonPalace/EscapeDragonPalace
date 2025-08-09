@@ -12,6 +12,7 @@ typedef struct SmallFish
 	Monster mon;		// 몬스터 구조체 중첩
 	MyPoint pos;		// 위치
 	int attack;		    // 공격력
+	bool isRush;
 } SmallFish;
 
 // 전역 변수

@@ -1,5 +1,6 @@
 #include "init.h"
 #include "fish_small.h"
+#include "Rabbit.h"
 
 Monster g_SmallFishMon;	// 작은 물고기 몬스터 구조체 공통 설정
 SmallFish g_SmallFishList[STAGE_CNT][SMALLFISH_CNT];	// 작은 물고기 포인트 배열
@@ -15,13 +16,23 @@ void UpdateSmallFish(unsigned long now)
 		// 몬스터가 죽었을 경우 넘어가기
 		if (!tempSmallFish[idx].mon.alive) continue;
 
-		// 몬스터 이동
-		--tempSmallFish[idx].pos.x;
+		// 몬스터가 화면 안에 있을 경우
+		if (tempSmallFish[idx].pos.x - GetPlusX() > 0 && tempSmallFish[idx].pos.x - GetPlusX() < SCREEN_WIDTH) {
+			// 플레이어와 몬스터의 Y 좌표가 같을 때
+			if (tempSmallFish[idx].pos.y == player.Pos.y + 2) {
+				tempSmallFish[idx].isRush = true;	// 돌진 상태로 변경
+			}
+			
+		}
+		if (tempSmallFish[idx].isRush) {
+			// 몬스터 이동
+			tempSmallFish[idx].pos.x -= 1;
 
-		// 몬스터가 왼쪽 화면 밖으로 넘어갔을 경우 죽음 처리
-		if (tempSmallFish[idx].pos.x - GetPlusX() <= 0)
-		{
-			tempSmallFish[idx].mon.alive = false;
+			// 몬스터가 왼쪽 화면 밖으로 넘어갔을 경우 죽음 처리
+			if (tempSmallFish[idx].pos.x <= 0)
+			{
+				tempSmallFish[idx].mon.alive = false;
+			}
 		}
 	}
 }
@@ -35,6 +46,10 @@ void DrawSmallFish()
 	SmallFish* tempSmallFish = g_SmallFishList[GetMapStatus()];
 	for (int idx = 0; idx < g_SmallFishListIdx[GetMapStatus()]; idx++)
 	{
+
+		// 몬스터가 죽었을 경우 넘어가기
+		if (!tempSmallFish[idx].mon.alive) continue;
+
 		int tempX = tempSmallFish[idx].pos.x - GetPlusX();
 		for (int x = 0; x < SMALLFISH_WIDTH; x++)
 		{
@@ -78,60 +93,76 @@ void InitSmallFish()
 	// 감옥
 	g_SmallFishList[E_Jail][g_SmallFishListIdx[E_Jail]++] = (SmallFish)
 	{
+		.mon = g_SmallFishMon,
 		.pos.x = 450,	// X 좌표
 		.pos.y = 18,	// Y 좌표
 		.attack = SMALLFISH_ATTACK,	// 공격력
+		.isRush = false
 	};
 
 	// 용궁
 	g_SmallFishList[E_DragonPalace][g_SmallFishListIdx[E_DragonPalace]++] = (SmallFish)
 	{
+		.mon = g_SmallFishMon,
 		.pos.x = 360,
 		.pos.y = 23,
 		.attack = SMALLFISH_ATTACK,
+		.isRush = false
 	};
 
 	g_SmallFishList[E_DragonPalace][g_SmallFishListIdx[E_DragonPalace]++] = (SmallFish)
 	{
+		.mon = g_SmallFishMon,
 		.pos.x = 445,
 		.pos.y = 7,
 		.attack = SMALLFISH_ATTACK,
+		.isRush = false
 	};
 
 	// 바다1
 	g_SmallFishList[E_Sea1][g_SmallFishListIdx[E_Sea1]++] = (SmallFish)
 	{
+		.mon = g_SmallFishMon,
 		.pos.x = 310,
 		.pos.y = 14,
 		.attack = SMALLFISH_ATTACK,
+		.isRush = false
 	};
 	
 	g_SmallFishList[E_Sea1][g_SmallFishListIdx[E_Sea1]++] = (SmallFish)
 	{
+		.mon = g_SmallFishMon,
 		.pos.x = 600,
 		.pos.y = 23,
 		.attack = SMALLFISH_ATTACK,
+		.isRush = false
 	};
 
 	// 바다2
 	g_SmallFishList[E_Sea2][g_SmallFishListIdx[E_Sea2]++] = (SmallFish)
 	{
+		.mon = g_SmallFishMon,
 		.pos.x = 233,
 		.pos.y = 12,
 		.attack = SMALLFISH_ATTACK,
+		.isRush = false
 	};
 
 	g_SmallFishList[E_Sea2][g_SmallFishListIdx[E_Sea2]++] = (SmallFish)
 	{
+		.mon = g_SmallFishMon,
 		.pos.x = 413,
 		.pos.y = 13,
 		.attack = SMALLFISH_ATTACK,
+		.isRush = false
 	};
 
 	g_SmallFishList[E_Sea2][g_SmallFishListIdx[E_Sea2]++] = (SmallFish)
 	{
+		.mon = g_SmallFishMon,
 		.pos.x = 570,
 		.pos.y = 15,
 		.attack = SMALLFISH_ATTACK,
+		.isRush = false
 	};
 }
